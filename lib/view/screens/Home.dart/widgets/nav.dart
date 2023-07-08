@@ -2,7 +2,10 @@
 
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
+import 'package:bookticket/view/screens/search/searchscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:sizer/sizer.dart';
 
 nav(BuildContext context) {
@@ -68,7 +71,9 @@ navsearch() {
                   borderRadius: BorderRadius.circular(12), color: wh),
               child: Center(
                   child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to( Searchscreen());
+                      },
                       icon: Icon(
                         Icons.search,
                         size: 4.h,

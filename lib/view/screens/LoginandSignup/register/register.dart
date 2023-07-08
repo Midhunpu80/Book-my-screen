@@ -4,7 +4,7 @@ import 'package:bookticket/view/screens/LoginandSignup/register/widgets/ima.dart
 import 'package:bookticket/view/screens/LoginandSignup/register/widgets/regbutton.dart';
 import 'package:bookticket/view/screens/LoginandSignup/register/widgets/textfild.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 
 import 'package:sizer/sizer.dart';
 
@@ -20,7 +20,7 @@ class register extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          backgroundColor: wh,
+          backgroundColor: bl,
           body: SingleChildScrollView(
             ///decoration: BoxDecoration(image:DecorationImage(image: AssetImage("images/619306-bg-full-netflix-grid-v2.desktop.jpg"),fit: BoxFit.fill)),
             child: Form(
@@ -34,7 +34,7 @@ class register extends StatelessWidget {
                       child: SizedBox(
                         child: alltext(
                             txt: "Welcome",
-                            col: bl,
+                            col: wh,
                             siz: 22.sp,
                             wei: FontWeight.w300),
                       ),
@@ -54,7 +54,7 @@ class register extends StatelessWidget {
                   SizedBox(
                     child: alltext(
                         txt: "Create Account ?",
-                        col: bl,
+                        col: wh,
                         siz: 12.sp,
                         wei: FontWeight.bold),
                   ),
@@ -100,7 +100,7 @@ class register extends StatelessWidget {
                         ),
                         alltext(
                             txt: "or",
-                            col: bl,
+                            col: wh,
                             siz: 13.sp,
                             wei: FontWeight.bold),
                         SizedBox(
@@ -112,7 +112,7 @@ class register extends StatelessWidget {
                         ),
                         alltext(
                             txt: "you have Already an Account/sign up?",
-                            col: bl,
+                            col: wh,
                             siz: 9.sp,
                             wei: FontWeight.bold),
                       ],

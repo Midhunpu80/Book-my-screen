@@ -21,7 +21,7 @@ class theaters extends StatelessWidget {
         body: CustomScrollView(
           slivers: [
             sliverbar(),
-            sliverMovie(img, txt),
+            sliverMovie(img: img, txt: txt),
             moviedate(),
             movieTime()
           ],

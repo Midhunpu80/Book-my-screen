@@ -1,13 +1,17 @@
+// ignore_for_file: use_key_in_widget_constructors, camel_case_types
+
+import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
-import 'package:bookticket/view/screens/LoginandSignup/Login/Login.dart';
 import 'package:bookticket/view/screens/LoginandSignup/otp/widgets/otpfields.dart';
+import 'package:bookticket/view/screens/LoginandSignup/otp/widgets/resendotp.dart';
+import 'package:bookticket/view/screens/LoginandSignup/otp/widgets/verifybutton.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
+// ignore: must_be_immutable
 class otpscreen extends StatelessWidget {
   TextEditingController con1 = TextEditingController();
   TextEditingController con2 = TextEditingController();
@@ -18,7 +22,11 @@ class otpscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      backgroundColor: bl,
+      appBar: AppBar(
+        leading: back(),
+        backgroundColor: Colors.transparent,
+      ),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -32,7 +40,10 @@ class otpscreen extends StatelessWidget {
             ),
             SizedBox(
               child: alltext(
-                  txt: "Verification", col: bl, siz: 15.sp, wei: FontWeight.bold),
+                  txt: "Verification",
+                  col: bl,
+                  siz: 15.sp,
+                  wei: FontWeight.bold),
             ),
             SizedBox(
               child: alltext(
@@ -90,31 +101,11 @@ class otpscreen extends StatelessWidget {
             SizedBox(
               height: 7.h,
             ),
+            verifyotp(),
             SizedBox(
-              height: 5.h,
-              width: 70.w,
-              child: ElevatedButton.icon(
-                onPressed: () {
-                  
-                  Get.to(login());
-                },
-                icon: const Icon(
-                  Icons.login,
-                  color: Colors.transparent,
-                ),
-                label: alltext(
-                    txt: "Verify", col: wh, siz: 14.sp, wei: FontWeight.bold),
-                style: ElevatedButton.styleFrom(backgroundColor: pp),
-              ),
+              height: 3.h,
             ),
-            SizedBox(height: 3.h,),
-              SizedBox(
-              child: alltext(
-                  txt: "Didnt you Recieve any code ?",
-                  col: gy,
-                  siz: 10.sp,
-                  wei: FontWeight.bold),
-            ),
+            resendotp(),
           ],
         ),
       ),

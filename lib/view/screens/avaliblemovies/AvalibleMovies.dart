@@ -34,8 +34,6 @@ class avalible_Movies extends StatelessWidget {
         ),
         body: ListView(
           children: [
-            /// Container(height: 50,color: re,),
-
             allmoviesList(),
           ],
         ),

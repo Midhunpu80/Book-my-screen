@@ -21,7 +21,8 @@ class Home extends StatelessWidget {
       // appBar: AppBar(backgroundColor: wh,),
       backgroundColor: bl,
 
-      endDrawer: Drawer(width: 80.w, backgroundColor: bl.withOpacity(0.8), child: newdrwer()),
+      endDrawer: Drawer(
+          width: 80.w, backgroundColor: bl.withOpacity(0.8), child: newdrwer()),
 
       // appBar: AppBar(),
       body: ListView(

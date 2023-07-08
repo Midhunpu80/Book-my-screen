@@ -3,7 +3,7 @@ import 'package:bookticket/utils/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-Widget sliverMovie(var img, var txt) {
+Widget sliverMovie({required String img, required String txt}) {
   return SliverAppBar(
     //  pinned: true,
     floating: true,
@@ -13,8 +13,6 @@ Widget sliverMovie(var img, var txt) {
       color: Colors.transparent,
     ),
     toolbarHeight: 35.h,
-
-    //backgroundColor: Color.fromARGB(255, 4, 0, 255),
     flexibleSpace: Stack(
       children: [
         Positioned.fill(
@@ -23,7 +21,7 @@ Widget sliverMovie(var img, var txt) {
           height: 50.h,
           width: 100.w,
           child: Image.network(
-            img,
+            img.toString(),
             fit: BoxFit.cover,
           ),
         )),
@@ -38,7 +36,7 @@ Widget sliverMovie(var img, var txt) {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   alltext(
-                      txt: "${txt.toString().substring(0, 10)}-",
+                      txt: "${txt.toString().substring(0)}-",
                       col: wh,
                       siz: 17.sp,
                       wei: FontWeight.bold),

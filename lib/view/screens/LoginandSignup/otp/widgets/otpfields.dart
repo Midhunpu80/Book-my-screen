@@ -15,10 +15,8 @@ Widget otp_fields(
     child: Container(
       height: 7.h,
       width: 12.w,
-      decoration: BoxDecoration(boxShadow: [
-        BoxShadow(
-            color: wh.withOpacity(0.3), blurRadius: 25, offset: Offset(2, 5))
-      ]),
+      decoration: BoxDecoration(),
+    
       child: TextFormField(
         onChanged: (value) {
           if (value.length == 1) {
@@ -28,6 +26,8 @@ Widget otp_fields(
           }
         },
         style: TextStyle(
+       color: wh
+          ,
           fontSize: 16.sp,
         ),
         inputFormatters: [LengthLimitingTextInputFormatter(1)],

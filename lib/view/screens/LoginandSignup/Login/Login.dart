@@ -1,9 +1,11 @@
+// ignore_for_file: camel_case_types, use_key_in_widget_constructors
+
+import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/LoginandSignup/Login/widgets/logbutton.dart';
 import 'package:bookticket/view/screens/LoginandSignup/Login/widgets/logimg.dart';
 import 'package:bookticket/view/screens/LoginandSignup/Login/widgets/textfileds.dart';
-import 'package:bookticket/view/screens/LoginandSignup/register/register.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -16,14 +18,17 @@ class login extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-          appBar: AppBar(),
+          backgroundColor: bl,
+          appBar: AppBar(
+            leading: back(),
+            backgroundColor: Colors.transparent,
+          ),
           body: SingleChildScrollView(
             child: Form(
               key: formkey2,
               child: Column(
                 children: [
                   logimage(),
-                 
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(

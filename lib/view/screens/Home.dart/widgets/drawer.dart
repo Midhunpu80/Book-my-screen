@@ -1,6 +1,7 @@
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/avaliblemovies/AvalibleMovies.dart';
+import 'package:bookticket/view/screens/profile/profilescreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -32,7 +33,10 @@ newdrwer() {
               color: re,
             ),
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                // ignore: prefer_const_constructors
+                Get.to(profileScreen());
+              },
               icon: Icon(
                 Icons.person,
                 size: 5.h,

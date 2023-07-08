@@ -4,7 +4,6 @@ import 'package:bookticket/view/screens/LoginandSignup/Login/Login.dart';
 import 'package:bookticket/view/screens/LoginandSignup/register/register.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
 
@@ -14,7 +13,7 @@ class logorReg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: wh,
+      backgroundColor: bl,
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -22,7 +21,7 @@ class logorReg extends StatelessWidget {
             Container(
               height: 40.h,
               width: 200.w,
-              color: wh,
+              color: bl,
               child:
                   Lottie.asset("images/72235-watch-a-movie-with-popcorn.json"),
             ),
@@ -31,7 +30,7 @@ class logorReg extends StatelessWidget {
             ),
             alltext(
                 txt: "create new account ?",
-                col: bl,
+                col: wh,
                 siz: 13.sp,
                 wei: FontWeight.bold),
             SizedBox(
@@ -54,7 +53,7 @@ class logorReg extends StatelessWidget {
             SizedBox(
               height: 2.h,
             ),
-            alltext(txt: "or", col: bl, siz: 13.sp, wei: FontWeight.bold),
+            alltext(txt: "or", col: wh, siz: 13.sp, wei: FontWeight.bold),
             SizedBox(
               height: 2.h,
             ),
@@ -77,7 +76,7 @@ class logorReg extends StatelessWidget {
             ),
             alltext(
                 txt: "Alredy have an account ? Signup",
-                col: bl,
+                col: wh,
                 siz: 11.sp,
                 wei: FontWeight.bold)
           ],

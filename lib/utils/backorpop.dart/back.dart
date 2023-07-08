@@ -1,4 +1,5 @@
 import 'package:bookticket/utils/colors/colors.dart';
+import 'package:bookticket/view/screens/search/searchscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
@@ -26,7 +27,10 @@ Widget searchico() {
   return CircleAvatar(
     backgroundColor: wh.withOpacity(0.3),
     child: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          // ignore: prefer_const_constructors
+          Get.to(Searchscreen());
+        },
         icon: Icon(
           Icons.search_rounded,
           color: wh,
