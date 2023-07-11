@@ -2,7 +2,7 @@ import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-
+////<-------theater all seats --------->///
 Widget seats() {
   return SizedBox(
       height: 40.h,

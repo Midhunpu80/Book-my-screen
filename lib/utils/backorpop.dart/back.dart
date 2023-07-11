@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:sizer/sizer.dart';
-
+///////<-----------back button------------->////
 Widget back() {
   return Padding(
     padding: const EdgeInsets.all(8.0),
@@ -22,6 +22,8 @@ Widget back() {
     ),
   );
 }
+///////<-----search icon for every nav bar -------------->////
+
 
 Widget searchico() {
   return CircleAvatar(
@@ -39,6 +41,7 @@ Widget searchico() {
   );
 }
 
+//<---------setting icon for every nava bar ---------->//////
 Widget settingico() {
   return CircleAvatar(
     backgroundColor: wh.withOpacity(0.3),

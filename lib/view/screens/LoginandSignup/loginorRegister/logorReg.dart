@@ -17,6 +17,7 @@ class logorReg extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            ////<-------register animated  image --------->///
             // ignore: sized_box_for_whitespace
             Container(
               height: 40.h,
@@ -57,7 +58,8 @@ class logorReg extends StatelessWidget {
             SizedBox(
               height: 2.h,
             ),
-
+////<-------navigation---------->///
+///////<-------Login---------->///
             SizedBox(
                 width: 80.w,
                 height: 6.h,
@@ -73,7 +75,8 @@ class logorReg extends StatelessWidget {
                     style: ElevatedButton.styleFrom(backgroundColor: yl))),
             SizedBox(
               height: 5.h,
-            ),
+            )
+            ,
             alltext(
                 txt: "Alredy have an account ? Signup",
                 col: wh,

@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:bookticket/service/user/Authentication/otp/OTPauth.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/LoginandSignup/Login/Login.dart';
@@ -9,17 +10,21 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
+////<------register button---------->///
 Widget regbutton() {
   return SizedBox(
     height: 7.h,
     width: 70.w,
     child: ElevatedButton.icon(
-      onPressed: () {
+      onPressed: () async {
+        ////<-------validate ---------->///
         if (formkey.currentState!.validate()) {
-          // Get.snackbar(title: const Text("is corrct "),backgroundColor: wh,messageText: const Text("now time"));
+          authOTP s = authOTP();
+          s.getOtp(
+            email: Regemail.text,
+          );
 
-          getvalidate();
-          // ignore: avoid_print
+        
           print("is validate");
         } else {}
       },
@@ -39,7 +44,7 @@ Widget logbutton() {
     width: 70.w,
     child: ElevatedButton.icon(
       onPressed: () {
-        Get.to(otpscreen());
+        Get.to(login());
       },
       icon: const Icon(
         Icons.login,
@@ -49,21 +54,4 @@ Widget logbutton() {
       style: ElevatedButton.styleFrom(backgroundColor: blu),
     ),
   );
-}
-
-getvalidate() {
-  var NAME = email.text;
-  var Email = email.text;
-  var PHONE = email.text;
-  var PASS = email.text;
-  var REPASS = email.text;
-  if (NAME.isNotEmpty ||
-      Email.isNotEmpty ||
-      PHONE.isNotEmpty ||
-      PASS.isNotEmpty ||
-      REPASS.isNotEmpty) {
-    Get.to(login());
-  } else {
-    print("not");
-  }
 }

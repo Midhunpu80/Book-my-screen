@@ -2,7 +2,7 @@ import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-
+////<-------all cast of this movie --------->///
 Widget cast() {
   return SizedBox(
     height: 18.h,
@@ -14,6 +14,7 @@ Widget cast() {
             padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
+                ////<-------images of all actors who acted in this movie --------->///
                 Container(
                   height: 11.h,
                   width: 24.w,
@@ -25,6 +26,7 @@ Widget cast() {
                       borderRadius: BorderRadius.circular(205.h),
                       color: bl.withOpacity(0.3)),
                 ),
+                ////<-------all actors name who acted in this movie---------->///
                 alltext(
                     txt: "Henry cavil",
                     col: wh,

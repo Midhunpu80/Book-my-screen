@@ -3,6 +3,7 @@
 import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
+import 'package:bookticket/view/screens/profile/widgets/editsheet.dart';
 import 'package:bookticket/view/screens/profile/widgets/head.dart';
 import 'package:bookticket/view/screens/profile/widgets/walland%20pay.dart';
 import 'package:flutter/material.dart';
@@ -24,24 +25,26 @@ class profileScreen extends StatelessWidget {
       ),
       body: Stack(
         children: [
-          Column(
-            children: [
-              head(),
-              SizedBox(
-                height: 3.h,
-              ),
-              /////////wallet and orders ////////////////////////////////////////////
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Container(
-                    height: 40.h,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(2.h),
-                        color: Color.fromARGB(31, 255, 255, 255)),
-                    child: walletandOrders()),
-              ),
-              //////////////////////////////////////////////////////////
-            ],
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                head(),
+                SizedBox(
+                  height: 3.h,
+                ),
+                /////////wallet and orders ////////////////////////////////////////////
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Container(
+                      height: 40.h,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(2.h),
+                          color: Color.fromARGB(31, 255, 255, 255)),
+                      child: walletandOrders()),
+                ),
+                //////////////////////////////////////////////////////////
+              ],
+            ),
           ),
           Positioned(
             top: 36.h,
@@ -50,7 +53,9 @@ class profileScreen extends StatelessWidget {
               height: 6.h,
               width: 30.w,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  editsheet(context);
+                },
                 child: alltext(
                     txt: "Edit", col: bl, siz: 12.sp, wei: FontWeight.bold),
                 style: ElevatedButton.styleFrom(
@@ -65,3 +70,5 @@ class profileScreen extends StatelessWidget {
     );
   }
 }
+
+

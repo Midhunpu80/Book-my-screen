@@ -2,6 +2,7 @@ import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+////<-------movie poster-------->///
 
 Widget movieposter(String img) {
   return Container(
@@ -18,6 +19,7 @@ Widget movieposter(String img) {
   );
 }
 
+////<-------Movie language --------->///
 Widget langaugaecard() {
   return Container(
     height: 25,
@@ -26,11 +28,13 @@ Widget langaugaecard() {
       borderRadius: BorderRadius.circular(5),
       color: wh,
     ),
+    ////<-------Language of the movie --------->///
     child: Center(
         child: alltext(txt: "En", col: bl, siz: 10.sp, wei: FontWeight.bold)),
   );
 }
 
+////<-------Movie titiel and rating others --------->///
 Widget titlecard(String title) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
@@ -48,6 +52,7 @@ Widget titlecard(String title) {
             color: yl,
             size: 2.h,
           ),
+          ////<-------movie Rating --------->///
           alltext(
               txt: "StarRating: 222.4k",
               col: wh,
@@ -55,10 +60,12 @@ Widget titlecard(String title) {
               wei: FontWeight.w400),
         ],
       ),
+      ////<-------Movie votes------>///
       alltext(txt: " 2235 votes", col: wh, siz: 9.sp, wei: FontWeight.bold),
       const SizedBox(
         height: 12,
       ),
+      ////<-------Movie duration-------->///
       alltext(
           txt: "2h 22m Action,. Crime,.Thriller. May 17, 2023",
           col: wh,
@@ -68,6 +75,7 @@ Widget titlecard(String title) {
   );
 }
 
+////<-------subtitle of the movie --------->///
 Widget subtitlecard() {
   return Column(
     children: [

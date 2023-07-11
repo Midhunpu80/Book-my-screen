@@ -5,6 +5,7 @@ import 'package:bookticket/view/screens/selectSeats/widget/screen.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+
 class selectseats extends StatelessWidget {
   const selectseats({super.key});
 
@@ -50,6 +51,7 @@ class selectseats extends StatelessWidget {
       ),
       body: Column(
         children: [
+          ////<-------movie information ---------->///
           informationaboutmovie(),
           Padding(
             padding: EdgeInsets.only(left: 35.h),
@@ -71,7 +73,9 @@ class selectseats extends StatelessWidget {
           SizedBox(
             height: 2.h,
           ),
+          ////<-------theater screen---------->///
           screens(),
+          ////<-------theater ststus avalible seats and alredy booked seats all informations ---------->///
           status(),
         ],
       ),

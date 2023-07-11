@@ -15,7 +15,7 @@ Widget otp_fields(
     child: Container(
       height: 7.h,
       width: 12.w,
-      decoration: BoxDecoration(),
+      decoration:const  BoxDecoration(),
     
       child: TextFormField(
         onChanged: (value) {

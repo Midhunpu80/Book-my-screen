@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
-
+////<-------ANimated image --------->///
 Widget logimage() {
   // ignore: unused_local_variable
   var h;

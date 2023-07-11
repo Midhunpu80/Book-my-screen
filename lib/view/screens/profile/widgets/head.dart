@@ -27,6 +27,7 @@ Widget head() {
             SizedBox(
               height: 2.h,
             ),
+            ////<--------user profile--------->///
             CircleAvatar(
               backgroundColor: wh,
               radius: 9.h,
@@ -37,6 +38,7 @@ Widget head() {
             SizedBox(
               height: 1.h,
             ),
+            ////<-------user name ---------->///
             SizedBox(
               child: alltext(
                   txt: "Midhun pu", col: wh, siz: 15.sp, wei: FontWeight.bold),
@@ -44,6 +46,7 @@ Widget head() {
             SizedBox(
               height: 2.h,
             ),
+            ////<-------user email---------->///
             SizedBox(
               child: alltext(
                   txt: "midhunpu80@gmail.com",
@@ -54,6 +57,7 @@ Widget head() {
             SizedBox(
               height: 2.h,
             ),
+            ////<-------user phone number --------->///
             SizedBox(
               child: alltext(
                   txt: "Ph:9061603159",

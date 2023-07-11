@@ -28,6 +28,7 @@ class login extends StatelessWidget {
               key: formkey2,
               child: Column(
                 children: [
+                  ////<-------login animated  image ---------->///
                   logimage(),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
@@ -49,6 +50,7 @@ class login extends StatelessWidget {
                         SizedBox(
                           height: 2.h,
                         ),
+                        ////<-------textform field --------->///
                         log_textfield(
                             "Enter your Email ID",
                             Icons.email,
@@ -78,6 +80,8 @@ class login extends StatelessWidget {
                       ],
                     ),
                   ),
+                  ////<-------Login Button--------->///
+
                   newlogbutton(),
                 ],
               ),

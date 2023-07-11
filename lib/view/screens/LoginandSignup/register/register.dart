@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names, use_key_in_widget_constructors
+
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/LoginandSignup/register/widgets/ima.dart';
@@ -5,15 +7,14 @@ import 'package:bookticket/view/screens/LoginandSignup/register/widgets/regbutto
 import 'package:bookticket/view/screens/LoginandSignup/register/widgets/textfild.dart';
 import 'package:flutter/material.dart';
 
-
 import 'package:sizer/sizer.dart';
 
 final formkey = GlobalKey<FormState>();
-final TextEditingController name = TextEditingController();
-final TextEditingController email = TextEditingController();
-final TextEditingController phone = TextEditingController();
-final TextEditingController pass = TextEditingController();
-final TextEditingController repass = TextEditingController();
+final TextEditingController Regname = TextEditingController();
+final TextEditingController Regemail = TextEditingController();
+final TextEditingController Regphone = TextEditingController();
+final TextEditingController Regpass = TextEditingController();
+final TextEditingController Regrepass = TextEditingController();
 
 class register extends StatelessWidget {
   @override
@@ -61,39 +62,45 @@ class register extends StatelessWidget {
                   SizedBox(
                     height: 1.h,
                   ),
+                  ////<-------Register fields ---------->///
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Column(
                       children: [
-                        textfield("Enter Your Name", Icons.person,
-                            "Please Enter Your Name", name, TextInputType.name),
+                        textfield(
+                            "Enter Your Name",
+                            Icons.person,
+                            "Please Enter Your Name",
+                            Regname,
+                            TextInputType.name),
                         textfield(
                             "Enter your Email ID",
                             Icons.email,
                             "Please Enter Your Email",
-                            email,
+                            Regemail,
                             TextInputType.emailAddress),
                         textfield(
                             "Enter  Phone Number",
                             Icons.phone,
                             "Please Enter Your Phone Number",
-                            phone,
+                            Regphone,
                             TextInputType.phone),
                         textfield(
                             "Enter Your Name Password",
                             Icons.lock,
                             "Please Enter Your Password",
-                            pass,
+                            Regpass,
                             TextInputType.text),
                         textfield(
                             "Re Enter Your Password ",
                             Icons.lock,
                             "Please ReEnter Your Name",
-                            repass,
+                            Regrepass,
                             TextInputType.text),
                         SizedBox(
                           height: 3.h,
                         ),
+                        ////<-------Register button--------->///
                         regbutton(),
                         SizedBox(
                           height: 1.h,
@@ -106,6 +113,7 @@ class register extends StatelessWidget {
                         SizedBox(
                           height: 1.h,
                         ),
+                        ////<-------Login button --------->///
                         logbutton(),
                         SizedBox(
                           height: 2.h,

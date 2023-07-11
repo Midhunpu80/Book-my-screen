@@ -3,7 +3,7 @@ import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/selectSeats/widget/seats.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
-
+////<-------theater white screen---------->///
 Widget screens() {
   return Padding(
     padding: const EdgeInsets.all(8.0),
@@ -47,7 +47,7 @@ Widget screens() {
     ),
   );
 }
-
+////<-------  theater status avalile seats and booked status --------->///
 Widget status() {
   return Container(
     height: 8.h,
@@ -102,7 +102,7 @@ Widget status() {
     ),
   );
 }
-
+////<-------theater which movie try book ---------->///
 Widget informationaboutmovie() {
   return Padding(
     padding: const EdgeInsets.all(4.0),

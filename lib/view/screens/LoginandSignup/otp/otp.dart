@@ -10,15 +10,16 @@ import 'package:flutter/material.dart';
 
 import 'package:lottie/lottie.dart';
 import 'package:sizer/sizer.dart';
-
-// ignore: must_be_immutable
-class otpscreen extends StatelessWidget {
   TextEditingController con1 = TextEditingController();
   TextEditingController con2 = TextEditingController();
   TextEditingController con3 = TextEditingController();
   TextEditingController con4 = TextEditingController();
   TextEditingController con5 = TextEditingController();
   TextEditingController con6 = TextEditingController();
+
+// ignore: must_be_immutable
+class otpscreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,7 +30,7 @@ class otpscreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: [
+          children: [////<-------animated otp images ---------->///
             SizedBox(
               height: 25.h,
               width: 100.w,
@@ -55,6 +56,7 @@ class otpscreen extends StatelessWidget {
             SizedBox(
               height: 5.h,
             ),
+            ////<-------otp fields---------->///
             Padding(
               padding: EdgeInsets.only(left: 1.h),
               child: Row(
@@ -101,10 +103,12 @@ class otpscreen extends StatelessWidget {
             SizedBox(
               height: 7.h,
             ),
+            ////<-------otp verification button ---------->///
             verifyotp(),
             SizedBox(
               height: 3.h,
             ),
+            ////<-------resend otp-------->///
             resendotp(),
           ],
         ),
