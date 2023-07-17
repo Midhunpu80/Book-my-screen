@@ -6,13 +6,12 @@ import 'package:bookticket/service/user/Authentication/exception.dart';
 import 'package:bookticket/service/user/endpoints/endpoints.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/view/screens/LoginandSignup/otp/otp.dart';
-import 'package:dio/dio.dart';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class authOTP extends GetxController {
-  final Dio dio = Dio();
+
 
   Future getOtp({
     required String email,

@@ -4,7 +4,6 @@ import 'package:bookticket/service/user/Authentication/otp/OTPauth.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/LoginandSignup/Login/Login.dart';
-import 'package:bookticket/view/screens/LoginandSignup/otp/otp.dart';
 import 'package:bookticket/view/screens/LoginandSignup/register/register.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -24,7 +23,6 @@ Widget regbutton() {
             email: Regemail.text,
           );
 
-        
           print("is validate");
         } else {}
       },

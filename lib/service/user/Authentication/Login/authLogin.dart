@@ -3,6 +3,8 @@
 import 'dart:convert';
 
 import 'package:bookticket/service/user/Authentication/exception.dart';
+import 'package:bookticket/service/user/allmovies/allmoviesSevice.dart';
+import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/service/user/endpoints/endpoints.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/view/screens/Home.dart/Home.dart';
@@ -13,6 +15,9 @@ import 'package:http/http.dart' as http;
 
 class authLogin extends GetxController {
   final Dio dio = Dio();
+
+  final con1 = Get.put(ServiceViewMovies());
+  final con2 = Get.put(service_ViewMovies());
 
   Future getLogin({required String email, required String password}) async {
     final data = {
@@ -34,7 +39,7 @@ class authLogin extends GetxController {
 
         // ignore: prefer_const_constructors
         Get.to(Home());
-
+      
         Get.snackbar("${response}sucess", "logined", backgroundColor: blu);
       } else {
         Get.snackbar("${response.body.toString()}failed",

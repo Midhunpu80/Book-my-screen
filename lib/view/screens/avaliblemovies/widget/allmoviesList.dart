@@ -1,5 +1,7 @@
-// ignore_for_file: camel_case_types, use_key_in_widget_constructors
+// ignore_for_file: camel_case_types, use_key_in_widget_constructors, unnecessary_brace_in_string_interps
 
+import 'package:bookticket/service/user/allmovies/allmoviesSevice.dart';
+import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/moviedetails/Moviedetails.dart';
@@ -8,7 +10,17 @@ import 'package:get/get.dart';
 
 import 'package:sizer/sizer.dart';
 
+var jata;
+
 class allmoviesList extends StatelessWidget {
+  final con = Get.put(ServiceViewMovies());
+  final con2 = Get.put(service_ViewMovies());
+
+  var tit;
+  var img;
+  // var img;
+
+  allmoviesList({required this.img, required this.tit});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -16,24 +28,32 @@ class allmoviesList extends StatelessWidget {
       width: 100.w,
       color: Colors.transparent,
       child: GridView.builder(
-          itemCount: 20,
+          itemCount: con2.reply.data.length,
           padding: const EdgeInsets.only(left: 5, right: 5, top: 9),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: 0.6,
             crossAxisCount: 2,
             mainAxisSpacing: 15,
             crossAxisSpacing: 15,
-            //mainAxisExtent: 200,
           ),
           itemBuilder: (context, index) {
             return Column(
               children: [
                 GestureDetector(
                   onTap: () {
+                    jata = con2.reply.data[index].movieId.toString();
+                    con2.getViewMovies();
+                    // for (var i in jata) {
+                    con.getMovies(ids: jata);
+                    //   }
+                    var vata = con.now_Movies.title[index];
+
+                    print("=====${vata.toString()}---------========");
+
                     Get.to(moviedetatils(
                         img:
-                            "https://sportshub.cbsistatic.com/i/2023/05/05/75a5162e-60b8-4bf4-9902-3c0ef49af85f/oppenheimer-poster-cillian-murphy.jpg?auto=webp&width=1500&height=2375&crop=0.632:1,smart",
-                        title: "openheimer"));
+                            "https://image.tmdb.org/t/p/original/${img[index].toString()}",
+                        title: con.newdata[index].toString()));
                   },
                   child: Container(
                     height: 30.h,
@@ -41,10 +61,11 @@ class allmoviesList extends StatelessWidget {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(1.h),
                         border: Border.all(width: 1, color: wh),
-                        image: const DecorationImage(
+                        image: DecorationImage(
                             image: NetworkImage(
-                                "https://sportshub.cbsistatic.com/i/2023/05/05/75a5162e-60b8-4bf4-9902-3c0ef49af85f/oppenheimer-poster-cillian-murphy.jpg?auto=webp&width=1500&height=2375&crop=0.632:1,smart"),
-                            fit: BoxFit.cover)),
+                                "https://image.tmdb.org/t/p/original/${img[index]}"),
+                            fit: BoxFit.fill)),
+
                     //  margin: const EdgeInsets.only(left: 5, right: 5),
                     child: Column(
                       children: [
@@ -91,7 +112,7 @@ class allmoviesList extends StatelessWidget {
                                 ),
                                 SizedBox(
                                     child: alltext(
-                                  txt: "77.56k",
+                                  txt: "openheimer",
                                   col: bl,
                                   siz: 10.sp,
                                   wei: FontWeight.bold,
@@ -100,7 +121,7 @@ class allmoviesList extends StatelessWidget {
                             ),
                           ),
                           alltext(
-                              txt: " OPEN HEIMER ",
+                              txt: "${tit[index]}",
                               col: wh,
                               siz: 11.sp,
                               wei: FontWeight.w600),

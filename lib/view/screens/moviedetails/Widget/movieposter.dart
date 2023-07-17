@@ -1,3 +1,4 @@
+import 'package:bookticket/constant/imgurl.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:flutter/material.dart';
@@ -10,12 +11,13 @@ Widget movieposter(String img) {
     width: 80.h,
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(2.h),
-        image: DecorationImage(
-            image: NetworkImage(
-              img.toString(),
-            ),
-            fit: BoxFit.cover),
+        // image: DecorationImage(
+        //     image: NetworkImage(
+        //       img.toString(),
+        //     ),
+        // fit: BoxFit.cover),
         color: gy.withOpacity(0.3)),
+    child: Image.network("https://image.tmdb.org/t/p/original/${img.toString()}"),
   );
 }
 

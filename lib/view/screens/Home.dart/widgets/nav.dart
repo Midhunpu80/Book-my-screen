@@ -1,9 +1,12 @@
 // ignore_for_file: unused_label
 
+import 'package:bookticket/service/user/allmovies/allmoviesSevice.dart';
+import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/search/searchscreen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:sizer/sizer.dart';
@@ -49,6 +52,8 @@ nav(BuildContext context) {
 }
 
 navsearch() {
+  final cons = Get.put(service_ViewMovies());
+  ServiceViewMovies s = ServiceViewMovies();
   return Column(
     children: [
       Row(
@@ -72,7 +77,7 @@ navsearch() {
               child: Center(
                   child: IconButton(
                       onPressed: () {
-                        Get.to( Searchscreen());
+                        cons.getViewMovies();
                       },
                       icon: Icon(
                         Icons.search,
