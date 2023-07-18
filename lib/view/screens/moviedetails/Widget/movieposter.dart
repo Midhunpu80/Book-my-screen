@@ -1,28 +1,30 @@
-import 'package:bookticket/constant/imgurl.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
-////<-------movie poster-------->///
 
+////<-------movie poster-------->///
 Widget movieposter(String img) {
   return Container(
     height: 55.h,
     width: 80.h,
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(2.h),
-        // image: DecorationImage(
-        //     image: NetworkImage(
-        //       img.toString(),
-        //     ),
-        // fit: BoxFit.cover),
+        image: DecorationImage(
+            image: NetworkImage(
+              "https://image.tmdb.org/t/p/original/${img.toString()}",
+            ),
+            fit: BoxFit.cover),
         color: gy.withOpacity(0.3)),
-    child: Image.network("https://image.tmdb.org/t/p/original/${img.toString()}"),
+    child:
+        Image.network("https://image.tmdb.org/t/p/original/${img.toString()}"),
   );
 }
 
 ////<-------Movie language --------->///
-Widget langaugaecard() {
+Widget langaugaecard({required String lan}) {
   return Container(
     height: 25,
     width: 25,
@@ -32,12 +34,18 @@ Widget langaugaecard() {
     ),
     ////<-------Language of the movie --------->///
     child: Center(
-        child: alltext(txt: "En", col: bl, siz: 10.sp, wei: FontWeight.bold)),
+        child: alltext(txt: lan, col: bl, siz: 10.sp, wei: FontWeight.bold)),
   );
 }
 
 ////<-------Movie titiel and rating others --------->///
-Widget titlecard(String title) {
+Widget titlecard(
+    {required title,
+    required var dur,
+    required var rating,
+    required var votes,
+    required var dates,
+    required var genre}) {
   return Column(
     mainAxisAlignment: MainAxisAlignment.start,
     crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,37 +64,59 @@ Widget titlecard(String title) {
           ),
           ////<-------movie Rating --------->///
           alltext(
-              txt: "StarRating: 222.4k",
+              txt: rating.toString(),
               col: wh,
               siz: 11.sp,
               wei: FontWeight.w400),
         ],
       ),
       ////<-------Movie votes------>///
-      alltext(txt: " 2235 votes", col: wh, siz: 9.sp, wei: FontWeight.bold),
+      alltext(txt: "votes:${votes}", col: wh, siz: 9.sp, wei: FontWeight.bold),
       const SizedBox(
-        height: 12,
+        height: 1,
       ),
       ////<-------Movie duration-------->///
-      alltext(
-          txt: "2h 22m Action,. Crime,.Thriller. May 17, 2023",
-          col: wh,
-          siz: 9.sp,
-          wei: FontWeight.bold)
+      Row(
+        children: [
+          alltext(
+              txt: "${dur.toString()}min",
+              col: wh,
+              siz: 9.sp,
+              wei: FontWeight.bold),
+          Padding(
+            padding: EdgeInsets.only(top: 1.h),
+            child: SizedBox(
+              height: 3.h,
+              width: 52.w,
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: genre.length,
+                  itemBuilder: (context, index) {
+                    return alltext(
+                        txt: "${genre[index]}",
+                        col: wh,
+                        siz: 9.sp,
+                        wei: FontWeight.bold);
+                  }),
+            ),
+          ),
+          alltext(
+              txt: "${dates.toString().substring(0, 10)}",
+              col: wh,
+              siz: 9.sp,
+              wei: FontWeight.bold)
+        ],
+      )
     ],
   );
 }
 
 ////<-------subtitle of the movie --------->///
-Widget subtitlecard() {
+Widget subtitlecard(String overview) {
   return Column(
     children: [
       alltext(
-          txt:
-              "Over many missions and against impossible odds, Dom Toretto and his family have outsmarted, out-nerved and outdriven every foe in their path. Now, they confront the most lethal opponent they've ever faced: A terrifying threat emerging from the shadows of the past who's fueled by blood revenge, and who is determined to shatter this family and destroy everything—and everyone—that Dom loves, forever",
-          col: wh,
-          siz: 8.sp,
-          wei: FontWeight.bold)
+          txt: overview.toString(), col: wh, siz: 8.sp, wei: FontWeight.bold)
     ],
   );
 }

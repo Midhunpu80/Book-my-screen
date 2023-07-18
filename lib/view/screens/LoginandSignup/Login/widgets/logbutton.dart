@@ -3,7 +3,6 @@ import 'package:bookticket/service/user/allmovies/allmoviesSevice.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
-import 'package:bookticket/view/screens/Home.dart/Home.dart';
 import 'package:bookticket/view/screens/LoginandSignup/Login/Login.dart';
 
 import 'package:flutter/material.dart';

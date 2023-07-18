@@ -1,9 +1,8 @@
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
-import 'package:bookticket/view/screens/moviedetails/Moviedetails.dart';
+
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+
 
 import 'package:sizer/sizer.dart';
 
@@ -21,11 +20,11 @@ movielsit() {
                 return InkWell(
                   splashColor: wh,
                   onTap: () {
-                    Get.to(moviedetatils(
-                        img:
-                            "https://m.media-amazon.com/images/I/81F5PF9oHhL._AC_UF894,1000_QL80_.jpg",
-                        title: "JHON WICK"));
-                  },
+                  //   Get.to(moviedetatils(
+                  //       img:
+                  //           "https://m.media-amazon.com/images/I/81F5PF9oHhL._AC_UF894,1000_QL80_.jpg",
+                  //       title: "JHON WICK"));
+                },
                   child: Row(
                     children: [
                       Container(

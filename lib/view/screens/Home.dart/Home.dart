@@ -1,6 +1,7 @@
 // ignore_for_file: file_names
 
 import 'package:bookticket/service/user/allmovies/allmoviesSevice.dart';
+import 'package:bookticket/service/user/allmovies/cast.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
@@ -17,6 +18,7 @@ import 'package:sizer/sizer.dart';
 class Home extends StatelessWidget {
   final cons = Get.put(service_ViewMovies());
   final cons1 = Get.put(ServiceViewMovies());
+  final cas = Get.put(cast_ViewMovies());
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class Home extends StatelessWidget {
       // appBar: AppBar(),
       body: Obx(
         () => cons1.isLoading.value
-            ? Center(child: CircularProgressIndicator())
+            ? const  Center(child: CircularProgressIndicator())
             : ListView(
                 children: [
                   nav(context),
@@ -59,15 +61,8 @@ class Home extends StatelessWidget {
                                   .map((e) => e.movieId.toString())
                                   .forEach((element) {
                                 cons1.getMovies(ids: element);
+                               
                               });
-
-                              // List cat = [];
-
-                              // cat.add(cons1.now_Movies.title);
-                              // print(cons1.now_Movies.title.toString());
-                              // print("6666666666666666${cat.length}");
-
-                              //cons.getViewMovies();
 
                               Get.to(avalible_Movies());
                             },

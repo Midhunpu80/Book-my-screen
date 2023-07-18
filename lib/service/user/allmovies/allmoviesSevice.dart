@@ -17,7 +17,8 @@ class service_ViewMovies extends GetxController {
     try {
       final response = await http.get(Uri.parse(viewmovies), headers: {
         'Content-Type': 'application/json;charset=utf-8',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
+        'Accept-Encoding': 'gzip, deflate',
       });
 
       if (response.statusCode == 200) {

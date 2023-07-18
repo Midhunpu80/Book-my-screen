@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print, camel_case_types, prefer_typing_uninitialized_variables, must_be_immutable
 
+import 'package:bookticket/model/user/all-movies-model.dart';
 import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
@@ -12,10 +13,29 @@ import 'package:sizer/sizer.dart';
 
 class moviedetatils extends StatelessWidget {
   // ignore: use_key_in_widget_constructors
-  moviedetatils({required this.img, required this.title});
+  moviedetatils(
+      {required this.img,
+      required this.title,
+      required this.overview,
+      required this.lan,
+      required this.dates,
+      required this.dur,
+  
+      required this.rating,
+      required this.votes,
+      required this.genre
+    
+      });
   var img;
   var title;
-
+  var overview;
+  var lan;
+  var dur;
+  var rating;
+  var votes;
+  var dates;
+  var genre;
+ 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -27,7 +47,10 @@ class moviedetatils extends StatelessWidget {
             width: 80.w,
             child: FloatingActionButton(
               onPressed: () {
-                Get.to(theaters(img: img,txt: title,));
+                Get.to(theaters(
+                  img: img,
+                  txt: title,
+                ));
                 print("name");
               },
               child: alltext(
@@ -69,16 +92,24 @@ class moviedetatils extends StatelessWidget {
                   children: [
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
-                      child: titlecard(title),
+                      child: titlecard(
+                          title: title,
+                          dur: dur,
+                          rating: rating,
+                          votes: votes,
+                          dates: dates,
+                          genre: genre
+                         ),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
                       child: Align(
-                          alignment: Alignment.topLeft, child: langaugaecard()),
+                          alignment: Alignment.topLeft,
+                          child: langaugaecard(lan: lan)),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10, top: 10),
-                      child: subtitlecard(),
+                      child: subtitlecard(overview),
                     ),
                     SizedBox(
                       height: 3.h,

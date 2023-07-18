@@ -6,3 +6,4 @@ String sendOTP = "$userurl/getOtp";
 String forgetotp = "$userurl/forgotOtp";
 String viewmovies = "$userurl/view-movies";
 String tmdburl = "$movieurl/movie/";
+String casturl = "$movieurl/movie/";

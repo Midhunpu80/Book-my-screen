@@ -1,6 +1,7 @@
-// ignore_for_file: camel_case_types, use_key_in_widget_constructors, unnecessary_brace_in_string_interps
+// ignore_for_file: camel_case_types, use_key_in_widget_constructors, unnecessary_brace_in_string_interps, prefer_typing_uninitialized_variables
 
 import 'package:bookticket/service/user/allmovies/allmoviesSevice.dart';
+import 'package:bookticket/service/user/allmovies/cast.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
@@ -15,20 +16,19 @@ var jata;
 class allmoviesList extends StatelessWidget {
   final con = Get.put(ServiceViewMovies());
   final con2 = Get.put(service_ViewMovies());
-
+  final cas = Get.put(cast_ViewMovies());
   var tit;
   var img;
-  // var img;
 
   allmoviesList({required this.img, required this.tit});
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 79.h,
+      height: 85.h,
       width: 100.w,
       color: Colors.transparent,
       child: GridView.builder(
-          itemCount: con2.reply.data.length,
+          itemCount: cons.newdata.toSet().length,
           padding: const EdgeInsets.only(left: 5, right: 5, top: 9),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             childAspectRatio: 0.6,
@@ -37,23 +37,29 @@ class allmoviesList extends StatelessWidget {
             crossAxisSpacing: 15,
           ),
           itemBuilder: (context, index) {
+            String sas = con.idt[index];
             return Column(
               children: [
                 GestureDetector(
                   onTap: () {
                     jata = con2.reply.data[index].movieId.toString();
                     con2.getViewMovies();
-                    // for (var i in jata) {
-                    con.getMovies(ids: jata);
-                    //   }
-                    var vata = con.now_Movies.title[index];
 
-                    print("=====${vata.toString()}---------========");
+                    con.getMovies(ids: jata);
+                    cas.getMovies_Cast(ids: sas.toString());
 
                     Get.to(moviedetatils(
-                        img:
-                            "https://image.tmdb.org/t/p/original/${img[index].toString()}",
-                        title: con.newdata[index].toString()));
+                      genre: con.gene[index],
+                      lan: con.lan[index],
+                      overview: con.overview[index],
+                      img:
+                          "https://image.tmdb.org/t/p/original/${img[index].toString()}",
+                      title: con.newdata[index].toString(),
+                      dates: con.rele[index].toString(),
+                      dur: con.dur[index].toString(),
+                      rating: con.rate[index].toString(),
+                      votes: con.rate[index].toString(),
+                    ));
                   },
                   child: Container(
                     height: 30.h,
@@ -112,7 +118,7 @@ class allmoviesList extends StatelessWidget {
                                 ),
                                 SizedBox(
                                     child: alltext(
-                                  txt: "openheimer",
+                                  txt: con.rate[index],
                                   col: bl,
                                   siz: 10.sp,
                                   wei: FontWeight.bold,
@@ -120,11 +126,17 @@ class allmoviesList extends StatelessWidget {
                               ],
                             ),
                           ),
-                          alltext(
-                              txt: "${tit[index]}",
-                              col: wh,
-                              siz: 11.sp,
-                              wei: FontWeight.w600),
+                          SizedBox(
+                            child: Text(
+                              "${tit[index]}",
+                              style: TextStyle(
+                                color: wh,
+                                fontSize: 11.sp,
+                                fontWeight: FontWeight.w600,
+                              ),
+                              maxLines: 1,
+                            ),
+                          )
                         ],
                       )),
                 ),
