@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_declarations, unused_local_variable, non_constant_identifier_names
 
 import 'dart:convert';
+import 'dart:math';
 
 import 'package:bookticket/constant/key/key.dart';
 import 'package:bookticket/model/user/all-movies-model.dart';
@@ -22,7 +23,7 @@ class ServiceViewMovies extends GetxController {
   RxList<String> rele = RxList<String>();
   RxList<String> dur = RxList<String>();
   RxList<String> gene = RxList<String>();
-
+  RxMap<dynamic, RxList<String>> allofthem = RxMap<dynamic, RxList<String>>();
   Future getMovies({required var ids}) async {
     try {
       isLoading(true);
@@ -51,6 +52,8 @@ class ServiceViewMovies extends GetxController {
         rate.add(now_Movies.voteAverage.toString());
         gene.add(now_Movies.genres.map((e) => e.name.toString()).toString());
         rele.add(now_Movies.releaseDate.toString());
+        allofthem.putIfAbsent("one", () => rate);
+        print(allofthem["one"]);
 
         newposter.add(now_Movies.posterPath);
         print(
@@ -73,6 +76,6 @@ class ServiceViewMovies extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    getMovies(ids: "");
+    getMovies(ids: 0);
   }
 }

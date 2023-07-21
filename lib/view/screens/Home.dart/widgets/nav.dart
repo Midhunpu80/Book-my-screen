@@ -4,6 +4,7 @@ import 'package:bookticket/service/user/allmovies/allmoviesSevice.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
+import 'package:bookticket/view/screens/search/searchscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -49,9 +50,11 @@ nav(BuildContext context) {
 }
 
 navsearch() {
+  final con1 = Get.put(ServiceViewMovies());
+  final con = Get.put(service_ViewMovies());
   final cons = Get.put(service_ViewMovies());
   // ignore: unused_local_variable
-  ServiceViewMovies s  = ServiceViewMovies();
+  ServiceViewMovies s = ServiceViewMovies();
   return Column(
     children: [
       Row(
@@ -76,6 +79,19 @@ navsearch() {
                   child: IconButton(
                       onPressed: () {
                         cons.getViewMovies();
+                        
+
+
+
+                        // ignore: unused_local_variable
+                        var sata = cons.reply.data
+                            .map((e) => e.movieId.toString())
+                            .forEach((element) {
+                          con1.getMovies(ids: element);
+                        });
+                        Get.to(Searchscreen());
+
+                        //cons.getViewMovies();
                       },
                       icon: Icon(
                         Icons.search,

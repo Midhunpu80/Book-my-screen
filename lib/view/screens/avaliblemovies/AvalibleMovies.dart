@@ -44,7 +44,7 @@ class avalible_Movies extends StatelessWidget {
               ],
             ),
             body: Obx(() => con.isLoading.value
-                ? Center(child: CircularProgressIndicator())
+                ?const  Center(child: CircularProgressIndicator())
                 : ListView(
                     children: [
                       allmoviesList(img: con.newposter, tit: con.newdata)
