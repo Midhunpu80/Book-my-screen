@@ -27,6 +27,9 @@ movielsit() {
                   onTap: () {
                     cas.getMovies_Cast(ids: cos.idt[index]);
                     Get.to(moviedetatils(
+                        gen2: cos.gene[index],
+                        gen3: cos.gene[index],
+                        gen4: cos.gene[index],
                         img: cos.newposter[index],
                         title: cos.newdata[index],
                         overview: cos.overview[index],

@@ -49,6 +49,9 @@ class allmoviesList extends StatelessWidget {
                     cas.getMovies_Cast(ids: sas.toString());
 
                     Get.to(moviedetatils(
+                      gen2: con.gene[index],
+                      gen3: con.gene[index],
+                      gen4: con.gene[index],
                       genre: con.gene[index],
                       lan: con.lan[index],
                       overview: con.overview[index],

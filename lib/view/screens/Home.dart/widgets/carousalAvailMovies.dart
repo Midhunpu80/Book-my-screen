@@ -35,6 +35,9 @@ carousalAvailMovies() {
                               con3.getMovies_Cast(ids: jas);
 
                               Get.to(moviedetatils(
+                                gen2: con.gene[index],
+                                gen3: con.gene[index],
+                                gen4: con.gene[index],
                                 lan: con.lan[index],
                                 img:
                                     "https://image.tmdb.org/t/p/original/${con.newposter[index].toString()}",

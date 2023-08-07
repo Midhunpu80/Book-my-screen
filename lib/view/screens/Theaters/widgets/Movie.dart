@@ -1,9 +1,16 @@
+// ignore_for_file: sized_box_for_whitespace
+
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-Widget sliverMovie({required String img, required String txt}) {
+Widget sliverMovie(
+    {required String img,
+    required String txt,
+    required String cat1,
+    required String cat2,
+    required String cat3}) {
   return SliverAppBar(
     //  pinned: true,
     floating: true,
@@ -49,11 +56,7 @@ Widget sliverMovie({required String img, required String txt}) {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  moviecard("Thriller"),
-                  moviecard("Drama"),
-                  moviecard("Action")
-                ],
+                children: [Expanded(child: moviecard(cat1))],
               )
             ],
           ),
@@ -64,17 +67,26 @@ Widget sliverMovie({required String img, required String txt}) {
 }
 
 Widget moviecard(String name) {
-  return Padding(
-    padding: const EdgeInsets.all(8.0),
-    child: Container(
-      height: 4.h,
-      width: 26.w,
-      decoration: BoxDecoration(
-          color: bl.withOpacity(0.5),
-          borderRadius: BorderRadius.circular(4),
-          border: Border.all(width: 2, color: wh)),
-      child: Center(
-          child: alltext(txt: name, col: wh, siz: 10.sp, wei: FontWeight.w800)),
-    ),
-  );
+  return Container(
+      height: 5.h,
+      width: 100.w,
+      child: ListView.builder(
+          itemCount: 1,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: EdgeInsets.only(left: 3.h, right: 20),
+              child: Container(
+                height: 4.h,
+                width: 86.w,
+                decoration: BoxDecoration(
+                    color: bl.withOpacity(0.5),
+                    borderRadius: BorderRadius.circular(4),
+                    border: Border.all(width: 2, color: wh)),
+                child: Center(
+                    child: alltext(
+                        txt: name, col: wh, siz: 10.sp, wei: FontWeight.w800)),
+              ),
+            );
+          }));
 }

@@ -19,13 +19,13 @@ class banner_ViewMovies extends GetxController {
 
       final url =
           // ignore: unnecessary_brace_in_string_interps
-          "https://api.themoviedb.org/3/movie/upcoming?api_key=${key}&&with_genres=28";
+          "https://api.themoviedb.org/3/movie/upcoming?api_key=460e03dc6bd3091d6d11c7b4a1fed2b5&&with_genres=28";
       final response = await http.get(
         Uri.parse(url),
         headers: {
           'Content-Type': 'application/json;charset=utf-8',
           'Accept': 'application/json',
-            'Accept-Encoding': 'gzip, deflate',
+          'Accept-Encoding': 'gzip, deflate',
         },
       );
 

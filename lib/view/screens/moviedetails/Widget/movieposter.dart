@@ -1,8 +1,7 @@
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
-import 'package:get/get.dart';
+
 import 'package:sizer/sizer.dart';
 
 ////<-------movie poster-------->///

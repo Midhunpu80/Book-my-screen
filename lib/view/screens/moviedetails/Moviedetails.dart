@@ -20,12 +20,9 @@ class moviedetatils extends StatelessWidget {
       required this.lan,
       required this.dates,
       required this.dur,
-  
       required this.rating,
       required this.votes,
-      required this.genre
-    
-      });
+      required this.genre,required this.gen2,required this.gen3,required this.gen4});
   var img;
   var title;
   var overview;
@@ -35,7 +32,10 @@ class moviedetatils extends StatelessWidget {
   var votes;
   var dates;
   var genre;
- 
+  var gen2;
+  var gen3;
+  var gen4;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -48,6 +48,9 @@ class moviedetatils extends StatelessWidget {
             child: FloatingActionButton(
               onPressed: () {
                 Get.to(theaters(
+                  cat1: gen2.toString(),
+                  cat2: gen3.toString(),
+                  cat3: gen4.toString(),
                   img: img,
                   txt: title,
                 ));
@@ -98,8 +101,7 @@ class moviedetatils extends StatelessWidget {
                           rating: rating,
                           votes: votes,
                           dates: dates,
-                          genre: genre
-                         ),
+                          genre: genre),
                     ),
                     Padding(
                       padding: const EdgeInsets.only(left: 10),
