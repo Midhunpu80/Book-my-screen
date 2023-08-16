@@ -23,7 +23,6 @@ class search_controll12 extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     fonts.value = fanda.allmoviesdetailsdata;
   }
@@ -31,8 +30,9 @@ class search_controll12 extends GetxController {
   newfetch(String val) {
     cant.value = fanda.allmoviesdetailsdata;
     // cant.value = fanda.allmoviesdetailsdata;
-    if (val.isEmpty) {
-      cant.assignAll(fanda.allmoviesdetailsdata.toList().toSet());
+    if (val.isEmpty || val == null) {
+      cant.assignAll(fanda.allmoviesdetailsdata.toList());
+
       update();
     } else {
       cant.assignAll(fanda.allmoviesdetailsdata
