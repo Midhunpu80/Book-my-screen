@@ -1,6 +1,5 @@
 // ignore_for_file: avoid_print, camel_case_types, prefer_typing_uninitialized_variables, must_be_immutable
 
-import 'package:bookticket/model/user/all-movies-model.dart';
 import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
@@ -22,7 +21,7 @@ class moviedetatils extends StatelessWidget {
       required this.dur,
       required this.rating,
       required this.votes,
-      required this.genre,required this.gen2,required this.gen3,required this.gen4});
+      required this.genre});
   var img;
   var title;
   var overview;

@@ -3,12 +3,10 @@
 import 'package:bookticket/model/user/view-movies.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/service/user/endpoints/endpoints.dart';
-import 'package:bookticket/view/screens/LoginandSignup/otp/otp.dart';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
-dynamic jwt;
 var cons = Get.put(ServiceViewMovies());
 
 class service_ViewMovies extends GetxController {
@@ -32,7 +30,7 @@ class service_ViewMovies extends GetxController {
         update();
         return reply;
       } else {
-        Get.to(otpscreen());
+        //  Get.to(otpscreen());
 
         print("failed");
         throw Exception("Failed");

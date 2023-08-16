@@ -1,6 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:bookticket/utils/colors/colors.dart';
+import 'package:bookticket/view/screens/search/widgets/movielist.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -16,9 +17,16 @@ Widget search_textfield(
     child: SizedBox(
       height: 9.h,
       child: TextFormField(
+        onChanged: (val) {
+          // serch_contol.fetch(val);
+          serch_contolx.newfetch(val.toString());
+
+          /// sss.function(val.toString());
+        },
+
         style: TextStyle(color: wh),
         keyboardType: type,
-        controller: cont,
+        // controller: cont,
         decoration: InputDecoration(
             helperText: help,
             prefixIconColor: wh,

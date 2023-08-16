@@ -5,6 +5,7 @@ import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/avaliblemovies/widget/allmoviesList.dart';
+import 'package:bookticket/view/screens/search/widgets/movielist.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -43,12 +44,10 @@ class avalible_Movies extends StatelessWidget {
                 ),
               ],
             ),
-            body: Obx(() => con.isLoading.value
-                ?const  Center(child: CircularProgressIndicator())
-                : ListView(
+            body:  ListView(
                     children: [
-                      allmoviesList(img: con.newposter, tit: con.newdata)
+                      allmoviesList()
                     ],
-                  ))));
+                  )));
   }
 }

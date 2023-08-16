@@ -1,5 +1,6 @@
 // ignore_for_file: unused_label
 
+import 'package:bookticket/main.dart';
 import 'package:bookticket/service/user/allmovies/allmoviesSevice.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/utils/colors/colors.dart';
@@ -19,7 +20,7 @@ nav(BuildContext context) {
           Padding(
               padding: EdgeInsets.only(left: 2.h, top: 2.h),
               child: alltext(
-                  txt: "Hi Midhun", col: re, siz: 18.sp, wei: FontWeight.w200)),
+                  txt: "Hi ${currentuser_controll.reply.data.signName.toString()}", col: re, siz: 18.sp, wei: FontWeight.w200)),
           Padding(
             padding: EdgeInsets.only(right: 6.sp, top: 5.sp),
             child: CircleAvatar(
@@ -51,6 +52,7 @@ nav(BuildContext context) {
 
 navsearch() {
   final con1 = Get.put(ServiceViewMovies());
+  // ignore: unused_local_variable
   final con = Get.put(service_ViewMovies());
   final cons = Get.put(service_ViewMovies());
   // ignore: unused_local_variable

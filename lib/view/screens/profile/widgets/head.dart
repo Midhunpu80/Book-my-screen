@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:flutter/material.dart';
@@ -41,7 +42,10 @@ Widget head() {
             ////<-------user name ---------->///
             SizedBox(
               child: alltext(
-                  txt: "Midhun pu", col: wh, siz: 15.sp, wei: FontWeight.bold),
+                  txt: currentuser_controll.reply.data.signName.toString(),
+                  col: wh,
+                  siz: 15.sp,
+                  wei: FontWeight.bold),
             ),
             SizedBox(
               height: 2.h,
@@ -49,7 +53,7 @@ Widget head() {
             ////<-------user email---------->///
             SizedBox(
               child: alltext(
-                  txt: "midhunpu80@gmail.com",
+                  txt: currentuser_controll.reply.data.signEmail.toString(),
                   col: bl,
                   siz: 12.sp,
                   wei: FontWeight.bold),
@@ -60,7 +64,8 @@ Widget head() {
             ////<-------user phone number --------->///
             SizedBox(
               child: alltext(
-                  txt: "Ph:9061603159",
+                  txt:
+                      "Ph:${currentuser_controll.reply.data.signPhone.toString()}",
                   col: bl,
                   siz: 11.sp,
                   wei: FontWeight.bold),

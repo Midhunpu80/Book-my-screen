@@ -1,6 +1,5 @@
 // ignore_for_file: use_key_in_widget_constructors, must_be_immutable
 
-import 'package:bookticket/service/user/allmovies/allmoviesSevice.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
@@ -13,7 +12,7 @@ import 'package:sizer/sizer.dart';
 
 class Searchscreen extends StatelessWidget {
   final cos = Get.put(ServiceViewMovies());
-  TextEditingController con = TextEditingController();
+  TextEditingController serchcontoller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +33,15 @@ class Searchscreen extends StatelessWidget {
                 hint: "Serch Your Fvourite Movies",
                 ico: Icons.search,
                 mess: "search Something",
-                cont: con,
+                cont: serchcontoller,
                 type: TextInputType.text,
                 help: "search"),
-         Obx(() => cos.isLoading.value?Center(child: CircularProgressIndicator()) :  movielsit(),
-         ) ],
+            Obx(
+              () =>serch_contolx.fonts.isEmpty 
+                  ? CircularProgressIndicator()
+                  : movielsit(),
+            )
+          ],
         ),
       ),
     );

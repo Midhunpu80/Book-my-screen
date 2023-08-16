@@ -70,7 +70,11 @@ Widget titlecard(
         ],
       ),
       ////<-------Movie votes------>///
-      alltext(txt: "votes:${votes}", col: wh, siz: 9.sp, wei: FontWeight.bold),
+      alltext(
+          txt: "votes:${votes.toString()}",
+          col: wh,
+          siz: 9.sp,
+          wei: FontWeight.bold),
       const SizedBox(
         height: 1,
       ),
@@ -92,7 +96,7 @@ Widget titlecard(
                   itemCount: genre.length,
                   itemBuilder: (context, index) {
                     return alltext(
-                        txt: "${genre[index]}",
+                        txt: "${genre[index].toString()}",
                         col: wh,
                         siz: 9.sp,
                         wei: FontWeight.bold);
@@ -100,7 +104,7 @@ Widget titlecard(
             ),
           ),
           alltext(
-              txt: "${dates.toString().substring(0, 10)}",
+              txt: "${dates}",
               col: wh,
               siz: 9.sp,
               wei: FontWeight.bold)

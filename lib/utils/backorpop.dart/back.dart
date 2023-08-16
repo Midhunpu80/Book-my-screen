@@ -1,9 +1,11 @@
+import 'package:bookticket/service/user/serchmovies/serchmovies_service.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/view/screens/search/searchscreen.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+import 'package:get/get.dart';
+
 import 'package:sizer/sizer.dart';
+
 ///////<-----------back button------------->////
 Widget back() {
   return Padding(
@@ -24,12 +26,15 @@ Widget back() {
 }
 ///////<-----search icon for every nav bar -------------->////
 
-
 Widget searchico() {
+ 
   return CircleAvatar(
     backgroundColor: wh.withOpacity(0.3),
     child: IconButton(
         onPressed: () {
+         /// fetch.fetchproduct(query: "Dangal");
+      ///   serch_controll.getSerch_Movies(query: "Dangal");
+
           // ignore: prefer_const_constructors
           Get.to(Searchscreen());
         },
@@ -43,10 +48,14 @@ Widget searchico() {
 
 //<---------setting icon for every nava bar ---------->//////
 Widget settingico() {
+///  final fetch = Get.put(fetchcontroll());
   return CircleAvatar(
     backgroundColor: wh.withOpacity(0.3),
     child: IconButton(
-        onPressed: () {},
+        onPressed: () {
+          /// Get.to(() => h());
+          ///fetch.fetchproduct(query: "Dangal");
+        },
         icon: Icon(
           Icons.settings,
           color: wh,

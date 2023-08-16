@@ -1,4 +1,3 @@
-import 'package:bookticket/service/user/Authentication/otp/OTPauth.dart';
 import 'package:bookticket/service/user/Authentication/otp/forgetOtp.dart';
 import 'package:bookticket/service/user/Authentication/singup/signup.dart';
 import 'package:bookticket/utils/colors/colors.dart';

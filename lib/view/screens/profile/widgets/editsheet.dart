@@ -1,12 +1,20 @@
+// ignore_for_file: non_constant_identifier_names
+
+import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/profile/widgets/profilefiled.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_navigation/src/extension_navigation.dart';
+
 import 'package:sizer/sizer.dart';
 
-TextEditingController edit_con = TextEditingController();
+final TextEditingController edit_con_email = TextEditingController(
+    text: currentuser_controll.reply.data.signEmail.toString());
+final TextEditingController edit_con_name = TextEditingController(
+    text: currentuser_controll.reply.data.signName.toString());
+final TextEditingController edit_con_phone = TextEditingController(
+    text: currentuser_controll.reply.data.signPhone.toString());
+
 editsheet(BuildContext context) {
   return showModalBottomSheet(
       context: context,
@@ -32,12 +40,12 @@ editsheet(BuildContext context) {
                 SizedBox(
                   height: 2.h,
                 ),
-                pro_textfield("Name", Icons.edit, "please edit", edit_con,
+                pro_textfield("Name", Icons.edit, "please edit", edit_con_name,
                     TextInputType.text, "Name"),
-                pro_textfield("Email", Icons.edit, "please edit", edit_con,
-                    TextInputType.emailAddress, "Email"),
-                pro_textfield("Phone", Icons.edit, "please edit", edit_con,
-                    TextInputType.phone, "Edit"),
+                pro_textfield("Email", Icons.edit, "please edit",
+                    edit_con_email, TextInputType.emailAddress, "Email"),
+                pro_textfield("Phone", Icons.edit, "please edit",
+                    edit_con_phone, TextInputType.phone, "Edit"),
                 SizedBox(
                   height: 4.h,
                 ),
@@ -52,7 +60,11 @@ editsheet(BuildContext context) {
 submitbutton() {
   return InkWell(
     onTap: () {
-      Get.back();
+      currentuser_controll.getupdate_user(
+          userid: currentuser_controll.reply.data.id.toString(),
+          email: edit_con_email.text,
+          newname: edit_con_name.text,
+          editphone: edit_con_phone.text);
     },
     child: Container(
       decoration: BoxDecoration(

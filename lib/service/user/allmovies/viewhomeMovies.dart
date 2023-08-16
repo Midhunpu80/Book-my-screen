@@ -10,20 +10,27 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
 class ServiceViewMovies extends GetxController {
-  TopMovieModel? now_Movies;
+  late TopMovieModel now_Movies;
   var isLoading = false.obs;
-  RxList<String> newdata = RxList<String>();
+  // RxList<String> newdata = RxList<String>();
 
-  RxList<String> newposter = RxList<String>();
+  ///TopMovieModel now_Movies;
+
+  // RxList<String> newposter = RxList<String>();
   RxList<String> idt = RxList<String>();
-  RxList<String> rate = RxList<String>();
+  // RxList<String> rate = RxList<String>();
 
-  RxList<String> lan = RxList<String>();
-  RxList<String> overview = RxList<String>();
-  RxList<String> rele = RxList<String>();
-  RxList<String> dur = RxList<String>();
+  // RxList<String> lan = RxList<String>();
+  // RxList<String> overview = RxList<String>();
+  // RxList<String> rele = RxList<String>();
+  // RxList<String> dur = RxList<String>();
   RxList<String> gene = RxList<String>();
   RxMap<dynamic, RxList<String>> allofthem = RxMap<dynamic, RxList<String>>();
+RxList<Map<String, dynamic>> allmoviesdetailsdata =
+      RxList<Map<String, dynamic>>([]);
+
+//RxList<Map<String, dynamic>> allmoviesdetailsdata = <Map<String, dynamic>>[].obs;
+
   Future getMovies({required var ids}) async {
     try {
       isLoading(true);
@@ -41,21 +48,35 @@ class ServiceViewMovies extends GetxController {
 
       if (response.statusCode == 200) {
         final jsonData = jsonDecode(response.body);
-        TopMovieModel now_Movies = TopMovieModel.fromJson(jsonData);
+        now_Movies = TopMovieModel.fromJson(jsonData);
+        Map<String, dynamic> newData = {
+          'title': now_Movies.title.toString(),
+          'poster': now_Movies.posterPath.toString(),
+          "rate": now_Movies.voteAverage.toString(),
+          "language": now_Movies.originalLanguage,
+          "overview": now_Movies.overview.toString(),
+          "duration": now_Movies.runtime.toString(),
+          "release": now_Movies.releaseDate.toString(),
+          "id": now_Movies.id.toString(),
+          // ... add more key-value pairs as needed
+        };
+        allmoviesdetailsdata.add(newData);
+        print(
+            "/////////${allmoviesdetailsdata.map((element) => element["title"]).toList().toString()}\\\\");
 
-        newdata.add(now_Movies.title);
+        // newdata.add(now_Movies.title);
         idt.add(now_Movies.id.toString());
-        rate.add(now_Movies.voteAverage.toString());
-        lan.add(now_Movies.originalLanguage.toString());
-        overview.add(now_Movies.overview.toString());
-        dur.add(now_Movies.runtime.toString());
-        rate.add(now_Movies.voteAverage.toString());
+        // rate.add(now_Movies.voteAverage.toString());
+        // lan.add(now_Movies.originalLanguage.toString());
+        // overview.add(now_Movies.overview.toString());
+        // dur.add(now_Movies.runtime.toString());
+        // rate.add(now_Movies.voteAverage.toString());
         gene.add(now_Movies.genres.map((e) => e.name.toString()).toString());
-        rele.add(now_Movies.releaseDate.toString());
-        allofthem.putIfAbsent("one", () => rate);
+        // rele.add(now_Movies.releaseDate.toString());
+        // allofthem.putIfAbsent("one", () => rate);
         print(allofthem["one"]);
 
-        newposter.add(now_Movies.posterPath);
+        // newposter.add(now_Movies.posterPath);
         print(
             "--------****-------------${idt.toList()}-------------****-----------");
         update();

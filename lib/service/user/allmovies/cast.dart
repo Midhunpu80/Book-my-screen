@@ -15,7 +15,7 @@ class cast_ViewMovies extends GetxController {
   RxList<String> pdata = RxList<String>();
 
   // RxList<String> newposter = RxList<String>();
- late Cast10 data_cast;
+  late Cast10 data_cast;
   Future getMovies_Cast({required var ids}) async {
     try {
       isLoading(true);
