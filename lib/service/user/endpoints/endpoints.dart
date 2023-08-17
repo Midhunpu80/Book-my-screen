@@ -10,4 +10,4 @@ String casturl = "$movieurl/movie/";
 String serchmovie_url = "$userurl/get-search/";
 String user_url = "${userurl}/getcurrentuser";
 String edit_url = "${userurl}/edit-profile";
-
+String dates_url = "${userurl}/get-dates";

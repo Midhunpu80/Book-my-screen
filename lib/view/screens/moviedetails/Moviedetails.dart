@@ -1,9 +1,11 @@
 // ignore_for_file: avoid_print, camel_case_types, prefer_typing_uninitialized_variables, must_be_immutable
 
+import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/Theaters/theaters.dart';
+import 'package:bookticket/view/screens/Theaters/widgets/MovieDate.dart';
 import 'package:bookticket/view/screens/moviedetails/Widget/cast.dart';
 import 'package:bookticket/view/screens/moviedetails/Widget/movieposter.dart';
 import 'package:flutter/material.dart';
@@ -45,11 +47,18 @@ class moviedetatils extends StatelessWidget {
           child: SizedBox(
             width: 80.w,
             child: FloatingActionButton(
-              onPressed: () {
+              onPressed: () async {
+                await date_controll.getcurrent_Dates(
+                    movie: title.toString(), date: currentdate.toString());
+                await date_controll.getcurrent_Dates(
+                    movie: title.toString(), date: thirddate.toString());
+                await date_controll.getcurrent_Dates(
+                    movie: title.toString(), date: tomorrowDate.toString());
+                // date_controll.getcurrent_Dates(
+                //     date: "2023-08-17 17:35:23.601395",
+                //     movie: title.toString());
                 Get.to(theaters(
-                  cat1: gen2.toString(),
-                  cat2: gen3.toString(),
-                  cat3: gen4.toString(),
+                  cat1: genre.toString(),
                   img: img,
                   txt: title,
                 ));

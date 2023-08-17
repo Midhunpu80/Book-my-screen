@@ -104,7 +104,7 @@ Widget titlecard(
             ),
           ),
           alltext(
-              txt: "${dates}",
+              txt: "${dates.toString().substring(0, 11)}",
               col: wh,
               siz: 9.sp,
               wei: FontWeight.bold)

@@ -53,7 +53,7 @@ class allmoviesList extends StatelessWidget {
 
                       Get.to(moviedetatils(
                         genre: availmoviesx.gene[index].toString(),
-                        lan: snap["lan"].toString(),
+                        lan: snap["language"].toString(),
                         overview: snap["overview"].toString(),
                         img:
                             "https://image.tmdb.org/t/p/original/${snap["poster"].toString()}",

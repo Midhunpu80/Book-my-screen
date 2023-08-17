@@ -9,8 +9,7 @@ Widget sliverMovie(
     {required String img,
     required String txt,
     required String cat1,
-    required String cat2,
-    required String cat3}) {
+  }) {
   return SliverAppBar(
     //  pinned: true,
     floating: true,
@@ -45,10 +44,10 @@ Widget sliverMovie(
                   alltext(
                       txt: "${txt.toString().substring(0)}-",
                       col: wh,
-                      siz: 17.sp,
+                      siz: 14.sp,
                       wei: FontWeight.bold),
                   alltext(
-                      txt: "English", col: wh, siz: 18.sp, wei: FontWeight.bold)
+                      txt: "English", col: wh, siz: 14.sp, wei: FontWeight.bold)
                 ],
               ),
               const SizedBox(
@@ -85,7 +84,7 @@ Widget moviecard(String name) {
                     border: Border.all(width: 2, color: wh)),
                 child: Center(
                     child: alltext(
-                        txt: name, col: wh, siz: 10.sp, wei: FontWeight.w800)),
+                        txt: name.toString(), col: wh, siz: 10.sp, wei: FontWeight.w800)),
               ),
             );
           }));
