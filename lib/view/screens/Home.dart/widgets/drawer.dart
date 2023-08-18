@@ -1,5 +1,6 @@
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
+import 'package:bookticket/view/screens/Home.dart/widgets/nav.dart';
 import 'package:bookticket/view/screens/avaliblemovies/AvalibleMovies.dart';
 import 'package:bookticket/view/screens/profile/profilescreen.dart';
 import 'package:flutter/material.dart';
@@ -78,6 +79,7 @@ Widget drwlists() {
           return Container(
             child: ListTile(
               onTap: () {
+                fetchapis.fetch();
                 index == 4 ? Get.back() : Get.to(avalible_Movies());
               },
               leading: Icon(

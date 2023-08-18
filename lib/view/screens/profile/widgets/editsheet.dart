@@ -1,19 +1,22 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:bookticket/main.dart';
+import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
+import 'package:bookticket/view/screens/Home.dart/widgets/nav.dart';
 import 'package:bookticket/view/screens/profile/widgets/profilefiled.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:sizer/sizer.dart';
 
 final TextEditingController edit_con_email = TextEditingController(
-    text: currentuser_controll.reply.data.signEmail.toString());
+    text: fetchapis.ofuser[0].data.signEmail.toString());
 final TextEditingController edit_con_name = TextEditingController(
-    text: currentuser_controll.reply.data.signName.toString());
+    text: fetchapis.ofuser[0].data.signName.toString());
 final TextEditingController edit_con_phone = TextEditingController(
-    text: currentuser_controll.reply.data.signPhone.toString());
+    text: fetchapis.ofuser[0].data.signPhone.toString());
 
 editsheet(BuildContext context) {
   return showModalBottomSheet(
@@ -61,10 +64,12 @@ submitbutton() {
   return InkWell(
     onTap: () {
       currentuser_controll.getupdate_user(
-          userid: currentuser_controll.reply.data.id.toString(),
+          userid: fetchapis.ofuser[0].data.id.toString(),
           email: edit_con_email.text,
           newname: edit_con_name.text,
           editphone: edit_con_phone.text);
+      Get.back();
+      
     },
     child: Container(
       decoration: BoxDecoration(

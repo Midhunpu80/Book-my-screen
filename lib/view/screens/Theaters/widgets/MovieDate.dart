@@ -68,9 +68,9 @@ Widget datecard({required var moviename}) {
                 child: InkWell(
                   splashColor: blu,
                   onTap: () {
-                    date_controll.fetch(
+                    date_controll.getcurrent_Dates(
                         date: alldate_orgin[index],
-                        name: moviename.toString());
+                        movie: moviename.toString());
                     print(moviename.toString());
 
                     print(alldate_orgin[index]);

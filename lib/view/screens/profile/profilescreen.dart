@@ -17,6 +17,13 @@ class profileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      //   floatingActionButton: FloatingActionButton(onPressed: () {
+      //     currentuser_controll.coun();
+
+      //   },
+
+      // child:   Obx(() =>  alltext(txt:"${currentuser_controll.count.toString()}" , col: bl, siz: 12.sp, wei: FontWeight.bold)),
+      //   ),
       backgroundColor: bl,
       appBar: AppBar(
         centerTitle: true,
@@ -25,54 +32,59 @@ class profileScreen extends StatelessWidget {
         leading: back(),
         backgroundColor: Colors.transparent,
       ),
-      body: Obx(()=>currentuser_controll.isLoading.value?Center(child: CircularProgressIndicator(),):
-        Stack(
-          children: [
-            SingleChildScrollView(
-              child: Column(
+      body: Obx(
+        () => currentuser_controll.isLoading.value
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Stack(
                 children: [
-                  head(),
-                  SizedBox(
-                    height: 3.h,
+                  SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        head(),
+                        SizedBox(
+                          height: 3.h,
+                        ),
+                        /////////wallet and orders ////////////////////////////////////////////
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Container(
+                              height: 40.h,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2.h),
+                                  color: Color.fromARGB(31, 255, 255, 255)),
+                              child: walletandOrders()),
+                        ),
+                        //////////////////////////////////////////////////////////
+                      ],
+                    ),
                   ),
-                  /////////wallet and orders ////////////////////////////////////////////
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                        height: 40.h,
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(2.h),
-                            color: Color.fromARGB(31, 255, 255, 255)),
-                        child: walletandOrders()),
+                  Positioned(
+                    top: 36.h,
+                    left: 36.w,
+                    child: SizedBox(
+                      height: 6.h,
+                      width: 30.w,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          editsheet(context);
+                        },
+                        child: alltext(
+                            txt: "Edit",
+                            col: bl,
+                            siz: 12.sp,
+                            wei: FontWeight.bold),
+                        style: ElevatedButton.styleFrom(
+                          //    shape: ContinuousRectangleBorder(),
+                          backgroundColor: wh,
+                        ),
+                      ),
+                    ),
                   ),
-                  //////////////////////////////////////////////////////////
                 ],
               ),
-            ),
-            Positioned(
-              top: 36.h,
-              left: 36.w,
-              child: SizedBox(
-                height: 6.h,
-                width: 30.w,
-                child: ElevatedButton(
-                  onPressed: () {
-                    editsheet(context);
-                  },
-                  child: alltext(
-                      txt: "Edit", col: bl, siz: 12.sp, wei: FontWeight.bold),
-                  style: ElevatedButton.styleFrom(
-                    //    shape: ContinuousRectangleBorder(),
-                    backgroundColor: wh,
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
 }
-
-

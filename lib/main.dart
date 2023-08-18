@@ -1,5 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
+import 'package:bookticket/contollerbinding/controller_binding.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:bookticket/service/user/getdates/getdates.dart';
@@ -19,7 +20,7 @@ final currentuser_controll = Get.put(get_currentuser_service());
 final view_movie_controll = Get.put(ServiceViewMovies());
 final search_controll = Get.put(get_serch_Movies());
 
-final date_controll = Get.put(getdates_service());
+final date_controll = Get.put<getdates_service>(getdates_service());
 
 ///final serch_controll = Get.put(get_serch_Movies());////
 
@@ -38,7 +39,9 @@ class MyApp extends StatelessWidget {
         ),
         home: Scaffold(
           body: Home(),
+        
         ),
+        initialBinding: controlllerbinding(),
       );
     });
   }

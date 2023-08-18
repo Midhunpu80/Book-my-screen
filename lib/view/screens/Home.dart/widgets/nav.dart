@@ -3,51 +3,62 @@
 import 'package:bookticket/main.dart';
 import 'package:bookticket/service/user/allmovies/allmoviesSevice.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
+import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
+import 'package:bookticket/view/screens/profile/widgets/editsheet.dart';
 import 'package:bookticket/view/screens/search/searchscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
+final fetchapis = Get.put(fetchapi());
+
 nav(BuildContext context) {
-  return Column(
-    children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-              padding: EdgeInsets.only(left: 2.h, top: 2.h),
-              child: alltext(
-                  txt: "Hi ${currentuser_controll.reply.data.signName.toString()}", col: re, siz: 18.sp, wei: FontWeight.w200)),
-          Padding(
-            padding: EdgeInsets.only(right: 6.sp, top: 5.sp),
-            child: CircleAvatar(
-              radius: 3.h,
-              child: Builder(
-                builder: (BuildContext context) {
-                  return IconButton(
-                    icon: Icon(
-                      Icons.person,
-                      color: wh,
-                      size: 4.h,
+  return Obx(() => fetchapis.isLoading.value || fetchapis.ofuser.isEmpty
+      ? const Center(child: CircularProgressIndicator())
+      : Column(
+          children: [
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                      padding: EdgeInsets.only(left: 2.h, top: 2.h),
+                      child: alltext(
+                          txt: currentuser_controll.name.value.toString() !=
+                                  fetchapis.ofuser[0].data.signName.toString()
+                              ? "Hi '${edit_con_name.value.text}"
+                              : "Hi '${currentuser_controll.name.value.toString()}",
+                          col: re,
+                          siz: 18.sp,
+                          wei: FontWeight.w200)),
+                  Padding(
+                    padding: EdgeInsets.only(right: 6.sp, top: 5.sp),
+                    child: CircleAvatar(
+                      radius: 3.h,
+                      child: Builder(
+                        builder: (BuildContext context) {
+                          return IconButton(
+                            icon: Icon(
+                              Icons.person,
+                              color: wh,
+                              size: 4.h,
+                            ),
+                            onPressed: () {
+                              Scaffold.of(context).openEndDrawer();
+                            },
+                            tooltip: MaterialLocalizations.of(context)
+                                .openAppDrawerTooltip,
+                          );
+                        },
+                      ),
                     ),
-                    onPressed: () {
-                      Scaffold.of(context).openEndDrawer();
-                    },
-                    tooltip:
-                        MaterialLocalizations.of(context).openAppDrawerTooltip,
-                  );
-                },
-              ),
-            ),
-          ),
-        ],
-      ),
-      navsearch()
-    ],
-  );
+                  )
+                ]),
+            navsearch()
+          ],
+        ));
 }
 
 navsearch() {
@@ -81,9 +92,6 @@ navsearch() {
                   child: IconButton(
                       onPressed: () {
                         cons.getViewMovies();
-                        
-
-
 
                         // ignore: unused_local_variable
                         var sata = cons.reply.data

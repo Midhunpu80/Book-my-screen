@@ -13,6 +13,14 @@ class getdates_service extends GetxController {
   var movieShows = <TheaterShowtime10>[].obs;
   RxList<Datum> showtimes = <Datum>[].obs;
 
+  @override
+  void onInit() {
+    /// fetch();
+    getcurrent_Dates();
+
+    super.onInit();
+  }
+
   // ignore: non_constant_identifier_names
   Future<List<Datum>> getcurrent_Dates({var movie, var date}) async {
     final bdy = {
@@ -28,16 +36,20 @@ class getdates_service extends GetxController {
         'Accept-Encoding': 'gzip, deflate',
         'Authorization': 'Bearer $token'
       });
+      showtimes.clear();
 
       if (response.statusCode == 200) {
         Map<String, dynamic> data = jsonDecode(response.body);
 
         final theatershowtime = TheaterShowtime10.fromJson(data);
-        showtimes.assignAll(theatershowtime.data);
+        showtimes.value.assignAll(theatershowtime.data);
+        showtimes.refresh();
         print(
             showtimes.map((element) => element.movieName.toString()).toList());
-
+        update();
         isLoading(false);
+
+        ///  }
 
         update();
 
@@ -50,22 +62,8 @@ class getdates_service extends GetxController {
       }
     } catch (e) {
       throw Exception("Failed");
+    } finally {
+      isLoading(false);
     }
-  }
-
-  late Future<TheaterShowtime10> all10;
-  fetch({var name, var date}) {
-    getcurrent_Dates(date: date.toString(), movie: name.toString());
-    update();
-    refresh();
-  }
-
-  @override
-  void onInit() {
-    fetch();
-    getcurrent_Dates();
-    // all10 = getcurrent_Dates();
-    // TODO: implement onInit
-    super.onInit();
   }
 }
