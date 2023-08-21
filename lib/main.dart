@@ -16,6 +16,7 @@ void main() {
   runApp(const MyApp());
 }
 
+
 final currentuser_controll = Get.put(get_currentuser_service());
 final view_movie_controll = Get.put(ServiceViewMovies());
 final search_controll = Get.put(get_serch_Movies());

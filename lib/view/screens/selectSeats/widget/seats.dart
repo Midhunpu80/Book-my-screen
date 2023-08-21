@@ -1,22 +1,43 @@
+// ignore_for_file: unnecessary_string_interpolations
+
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
+
 ////<-------theater all seats --------->///
 Widget seats() {
   return SizedBox(
       height: 40.h,
-      width: 90.w,
+      width: 80.w,
       child: GridView.builder(
         itemCount: 104,
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: 0.7,
-          crossAxisCount: 13,
-          crossAxisSpacing: 5,
-          mainAxisSpacing: 5,
+          crossAxisCount: 12,
+          crossAxisSpacing: 9,
+          mainAxisSpacing: 9,
         ),
         itemBuilder: (context, index) {
-          if (index % 13 == 0) {
+          int rowss = index ~/ 12;
+          if (index ~/ 12 == -1) {
+            return Container(
+              height: 18,
+              width: 100,
+              decoration: BoxDecoration(
+                border: Border.all(width: 1, color: pp),
+              ),
+              child: Center(
+                child: alltext(
+                    txt:
+                        "${String.fromCharCode(rowss + 6).toString().toUpperCase()}",
+                    col: wh,
+                    siz: 7.sp,
+                    wei: FontWeight.bold),
+              ),
+            );
+          }
+          if (index % 12 == 0) {
             // Check if it's the first column
             return Container(
               height: 18,
@@ -26,40 +47,35 @@ Widget seats() {
               ),
               child: Center(
                 child: alltext(
-                    // ignore: unnecessary_string_interpolations
                     txt:
-                        // ignore: unnecessary_string_interpolations
-                        "${String.fromCharCode(index ~/ 13 + 65).toString().toUpperCase()}",
+                        "${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}",
                     col: wh,
                     siz: 7.sp,
                     wei: FontWeight.bold),
               ),
             );
-          } else if (index % 13 == 9 || index % 13 == 8 || index % 13 == 4) {
-            return Container(
+          } else {
+            return InkWell(
+              onTap: () {
+                // ignore: avoid_print
+                print(
+                    " ${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}${index % 12}");
+              },
+              child: Container(
                 height: 18,
                 width: 100,
                 decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  border: Border.all(width: 1, color: Colors.transparent),
+                  border: Border.all(width: 1, color: wh),
                 ),
-                child: const Center(
-                  child: SizedBox(),
-                ));
-          } else {
-            return Container(
-              height: 18,
-              width: 100,
-              decoration: BoxDecoration(
-                border:
-                    Border.all(width: 1, color:wh),
+                child: Center(
+                    child: alltext(
+                        // ignore: unnecessary_brace_in_string_interps
+                        txt:
+                            " ${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}${index % 12}",
+                        col: wh,
+                        siz: 5.sp,
+                        wei: FontWeight.bold)),
               ),
-              child: Center(
-                  child: alltext(
-                      txt: "${index + 1 * 1}",
-                      col: wh,
-                      siz: 6.sp,
-                      wei: FontWeight.bold)),
             );
           }
         },

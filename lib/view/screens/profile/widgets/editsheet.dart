@@ -1,7 +1,6 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:bookticket/main.dart';
-import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/Home.dart/widgets/nav.dart';
@@ -11,12 +10,12 @@ import 'package:get/get.dart';
 
 import 'package:sizer/sizer.dart';
 
-final TextEditingController edit_con_email = TextEditingController(
-    text: fetchapis.ofuser[0].data.signEmail.toString());
-final TextEditingController edit_con_name = TextEditingController(
-    text: fetchapis.ofuser[0].data.signName.toString());
-final TextEditingController edit_con_phone = TextEditingController(
-    text: fetchapis.ofuser[0].data.signPhone.toString());
+final TextEditingController edit_con_email =
+    TextEditingController(text: fetchapis.ofuser[0].data.signEmail.toString());
+final TextEditingController edit_con_name =
+    TextEditingController(text: fetchapis.ofuser[0].data.signName.toString());
+final TextEditingController edit_con_phone =
+    TextEditingController(text: fetchapis.ofuser[0].data.signPhone.toString());
 
 editsheet(BuildContext context) {
   return showModalBottomSheet(
@@ -69,7 +68,6 @@ submitbutton() {
           newname: edit_con_name.text,
           editphone: edit_con_phone.text);
       Get.back();
-      
     },
     child: Container(
       decoration: BoxDecoration(

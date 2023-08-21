@@ -5,11 +5,11 @@ import 'package:bookticket/utils/text/text.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-Widget sliverMovie(
-    {required String img,
-    required String txt,
-    required String cat1,
-  }) {
+Widget sliverMovie({
+  required String img,
+  required String txt,
+  required String cat1,
+}) {
   return SliverAppBar(
     //  pinned: true,
     floating: true,
@@ -41,13 +41,15 @@ Widget sliverMovie(
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  alltext(
-                      txt: "${txt.toString().substring(0)}-",
-                      col: wh,
-                      siz: 14.sp,
-                      wei: FontWeight.bold),
-                  alltext(
-                      txt: "English", col: wh, siz: 14.sp, wei: FontWeight.bold)
+                  SizedBox(
+                      child: alltext(
+                          txt: "${txt.toString().substring(0)}-",
+                          col: wh,
+                          siz: 14.sp,
+                          wei: FontWeight.bold)),
+
+                  ///   alltext(
+                  ///        tx t: "English", col: wh, siz: 14.sp, wei: FontWeight.bold)
                 ],
               ),
               const SizedBox(
@@ -84,7 +86,10 @@ Widget moviecard(String name) {
                     border: Border.all(width: 2, color: wh)),
                 child: Center(
                     child: alltext(
-                        txt: name.toString(), col: wh, siz: 10.sp, wei: FontWeight.w800)),
+                        txt: name.toString(),
+                        col: wh,
+                        siz: 10.sp,
+                        wei: FontWeight.w800)),
               ),
             );
           }));

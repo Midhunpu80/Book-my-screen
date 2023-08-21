@@ -1,9 +1,10 @@
+// ignore_for_file: camel_case_types
+
 import 'dart:convert';
 
 import 'package:bookticket/model/user/theater_show_time10/theater_show_time10.dart';
 import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:bookticket/service/user/endpoints/endpoints.dart';
-import 'package:bookticket/view/screens/Theaters/controller/contoller.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -15,7 +16,6 @@ class getdates_service extends GetxController {
 
   @override
   void onInit() {
-    /// fetch();
     getcurrent_Dates();
 
     super.onInit();
@@ -23,6 +23,7 @@ class getdates_service extends GetxController {
 
   // ignore: non_constant_identifier_names
   Future<List<Datum>> getcurrent_Dates({var movie, var date}) async {
+     update();
     final bdy = {
       "date": date.toString(),
       "response": {"title": movie.toString()}
@@ -42,8 +43,9 @@ class getdates_service extends GetxController {
         Map<String, dynamic> data = jsonDecode(response.body);
 
         final theatershowtime = TheaterShowtime10.fromJson(data);
-        showtimes.value.assignAll(theatershowtime.data);
+        showtimes.assignAll(theatershowtime.data);
         showtimes.refresh();
+        // ignore: avoid_print
         print(
             showtimes.map((element) => element.movieName.toString()).toList());
         update();
@@ -57,6 +59,7 @@ class getdates_service extends GetxController {
       } else {
         isLoading(false);
 
+        // ignore: avoid_print
         print("failed");
         throw Exception("Failed");
       }
@@ -65,5 +68,6 @@ class getdates_service extends GetxController {
     } finally {
       isLoading(false);
     }
+  
   }
 }

@@ -50,13 +50,11 @@ class moviedetatils extends StatelessWidget {
               onPressed: () async {
                 await date_controll.getcurrent_Dates(
                     movie: title.toString(), date: currentdate.toString());
-                await date_controll.getcurrent_Dates(
+                date_controll.getcurrent_Dates(
                     movie: title.toString(), date: thirddate.toString());
-                await date_controll.getcurrent_Dates(
+                date_controll.getcurrent_Dates(
                     movie: title.toString(), date: tomorrowDate.toString());
-                // date_controll.getcurrent_Dates(
-                //     date: "2023-08-17 17:35:23.601395",
-                //     movie: title.toString());
+
                 Get.to(theaters(
                   cat1: genre.toString(),
                   img: img,
