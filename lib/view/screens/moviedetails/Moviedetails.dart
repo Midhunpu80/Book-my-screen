@@ -54,6 +54,7 @@ class moviedetatils extends StatelessWidget {
                     movie: title.toString(), date: thirddate.toString());
                 date_controll.getcurrent_Dates(
                     movie: title.toString(), date: tomorrowDate.toString());
+              ///  tt.alldates = alldate_orgin[0];
 
                 Get.to(theaters(
                   cat1: genre.toString(),

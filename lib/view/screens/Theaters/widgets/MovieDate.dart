@@ -1,7 +1,6 @@
 // ignore_for_file: file_names, unnecessary_string_interpolations, prefer_const_constructors
 
 import 'package:bookticket/main.dart';
-import 'package:bookticket/model/user/currentuser10.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/Theaters/controller/contoller.dart';
@@ -11,6 +10,7 @@ import 'package:intl/intl.dart';
 import 'package:sizer/sizer.dart';
 
 bool isfalse = true;
+final tt = Get.put(theatercontroller());
 DateTime currentdate = DateTime.now();
 DateTime tomorrowDate = currentdate.add(Duration(days: 1));
 DateTime thirdday = currentdate.add(Duration(days: 2));
@@ -18,7 +18,7 @@ String changedate = DateFormat.yMMMEd().format(currentdate).toString();
 String tommarow = DateFormat.yMMMEd().format(tomorrowDate).toString();
 String thirddate = DateFormat.yMMMEd().format(thirdday).toString();
 List<dynamic> alldates = [changedate, tommarow, thirddate];
-List<dynamic> alldate_orgin = [currentdate, tomorrowDate, thirddate];
+List<dynamic> alldate_orgin = [currentdate, tomorrowDate, thirdday];
 
 Widget moviedate({required var moviename}) {
   return SliverAppBar(
@@ -71,12 +71,21 @@ Widget datecard({required var moviename}) {
                     date_controll.getcurrent_Dates(
                         date: alldate_orgin[index],
                         movie: moviename.toString());
+                    // ignore: avoid_print
                     print(moviename.toString());
+                    // tt.alldates = alldate_orgin[index];
+                    dynamic s = alldate_orgin[index];
+                    tt.alldates = s;
+                    // ignore: avoid_print
+                    print(
+                        "-----------${tt.alldates.toString()}------------------");
 
+                    // ignore: avoid_print
                     print(alldate_orgin[index]);
                     // ignore: unused_local_variable
                     var jay = tt.change(index: index);
-                    print("${alldates[index]}");
+                    // ignore: avoid_print
+                    // print("${alldates[index]}");
                     //  print("${changedate}");
                   },
                   child: Obx(

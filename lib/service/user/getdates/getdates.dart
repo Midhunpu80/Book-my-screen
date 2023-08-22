@@ -23,7 +23,7 @@ class getdates_service extends GetxController {
 
   // ignore: non_constant_identifier_names
   Future<List<Datum>> getcurrent_Dates({var movie, var date}) async {
-     update();
+    update();
     final bdy = {
       "date": date.toString(),
       "response": {"title": movie.toString()}
@@ -68,6 +68,5 @@ class getdates_service extends GetxController {
     } finally {
       isLoading(false);
     }
-  
   }
 }

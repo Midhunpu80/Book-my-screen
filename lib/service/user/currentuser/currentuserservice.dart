@@ -6,7 +6,6 @@ import 'package:bookticket/model/user/currentuser10.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/service/user/endpoints/endpoints.dart';
 import 'package:bookticket/utils/colors/colors.dart';
-import 'package:bookticket/view/screens/LoginandSignup/otp/otp.dart';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -35,54 +34,6 @@ class get_currentuser_service extends GetxController {
     ///  getcurrent_user();
     //updateui();
   }
-
-  // ignore: non_constant_identifier_names
-  // getcurrent_user() async {
-  //   try {
-  //     isLoading(true);
-  //     final response = await http.get(Uri.parse(user_url), headers: {
-  //       'Content-Type': 'application/json;charset=utf-8',
-  //       'Accept': 'application/json',
-  //       'Accept-Encoding': 'gzip, deflate',
-  //       'Authorization': 'Bearer $token'
-  //     });
-  //     current_user.clear();
-
-  //     if (response.statusCode == 200) {
-  //       final data = jsonDecode(response.body) as Map<String, dynamic>;
-  //       updateui(data);
-
-  //       final userdata = Currentuser10.fromJson(data);
-
-  //       print(data.toString());
-  //       //  print(reply.data.signEmail.toString());
-  //       current_user.assign(userdata.data);
-  //       print(current_user
-  //           .map((element) => element.signEmail.toString())
-  //           .toList());
-  //       current_user.refresh();
-
-  //       isLoading(false);
-
-  //       update();
-  //       return current_user;
-  //     } else {
-  //       isLoading(false);
-  //       Get.to(otpscreen());
-
-  //       print("failed");
-  //       throw Exception("Failed");
-  //     }
-  //   } catch (e) {
-  //     throw Exception("Failed");
-  //   }
-  // }
-
-  // void updateui([var data]) {
-  //   name.value = data["data"]["signName"];
-  //   print("---------${name.value.toString()}");
-  //   update();
-  // }
 
   // ignore: non_constant_identifier_names
   var name = "".obs;
@@ -149,7 +100,7 @@ Future getcurrentuser() async {
   });
   if (response.statusCode == 200) {
     var dataz = response.body;
-    return currentuser10FromJson(dataz);
+    
   }
 }
 

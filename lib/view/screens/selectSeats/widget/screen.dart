@@ -1,8 +1,12 @@
+import 'package:bookticket/main.dart';
+import 'package:bookticket/model/user/theater_show_time10/theater_show_time10.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/selectSeats/widget/seats.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:sizer/sizer.dart';
+
 ////<-------theater white screen---------->///
 Widget screens() {
   return Padding(
@@ -47,6 +51,7 @@ Widget screens() {
     ),
   );
 }
+
 ////<-------  theater status avalile seats and booked status --------->///
 Widget status() {
   return Container(
@@ -102,52 +107,64 @@ Widget status() {
     ),
   );
 }
+
 ////<-------theater which movie try book ---------->///
-Widget informationaboutmovie() {
-  return Padding(
-    padding: const EdgeInsets.all(4.0),
-    child: Container(
-      height: 10.h,
-      width: 95.w,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(1.h),
-        border: Border.all(width: 1, color: wh),
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: alltext(
-                txt: "OPEN HEIMER", col: wh, siz: 12.sp, wei: FontWeight.bold),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(5.0),
-            child: Row(
-              children: [
-                alltext(
-                    txt: "Shobha city mall inox |",
-                    col: wh,
-                    siz: 10.sp,
-                    wei: FontWeight.w500),
-                alltext(
-                    txt: "English-3D|",
-                    col: wh,
-                    siz: 10.sp,
-                    wei: FontWeight.w500),
-                alltext(
-                    txt: "6 July 2023|",
-                    col: wh,
-                    siz: 9.sp,
-                    wei: FontWeight.w500),
-                alltext(
-                    txt: "04:30 PM", col: wh, siz: 10.sp, wei: FontWeight.w500),
-              ],
+Widget informationaboutmovie(
+    {required var movie,
+    required var ownername,
+    required var date,
+    required var time}) {
+  return Obx(
+    () => date_controll.isLoading.value
+        ? CircularProgressIndicator()
+        : Padding(
+            padding: const EdgeInsets.all(4.0),
+            child: Container(
+              height: 10.h,
+              width: 95.w,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(1.h),
+                border: Border.all(width: 1, color: wh),
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: alltext(
+                        txt: movie, col: wh, siz: 12.sp, wei: FontWeight.bold),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: Row(
+                      children: [
+                        alltext(
+                            txt: "${ownername.toString()}|",
+                            col: wh,
+                            siz: 10.sp,
+                            wei: FontWeight.w500),
+                        alltext(
+                            txt: "English-3D|",
+                            col: wh,
+                            siz: 10.sp,
+                            wei: FontWeight.w500),
+                        alltext(
+                            txt: "${date.toString()}|",
+                            col: wh,
+                            siz: 9.sp,
+                            wei: FontWeight.w500),
+                        alltext(
+                            txt: "${time.toString()}",
+                            col: wh,
+                            siz: 10.sp,
+                            wei: FontWeight.w500),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-        ],
-      ),
-    ),
   );
 }

@@ -96,6 +96,7 @@ Widget titlecard(
                   itemCount: genre.length,
                   itemBuilder: (context, index) {
                     return alltext(
+                        // ignore: unnecessary_string_interpolations
                         txt: "${genre[index].toString()}",
                         col: wh,
                         siz: 9.sp,
@@ -104,6 +105,7 @@ Widget titlecard(
             ),
           ),
           alltext(
+              // ignore: unnecessary_string_interpolations
               txt: "${dates.toString().substring(0, 11)}",
               col: wh,
               siz: 9.sp,

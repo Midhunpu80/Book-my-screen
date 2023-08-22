@@ -1,18 +1,20 @@
 import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
+import 'package:bookticket/view/screens/Theaters/widgets/MovieDate.dart';
 import 'package:bookticket/view/screens/selectSeats/selectseats.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-
 import 'package:page_animation_transition/animations/bottom_to_top_faded_transition.dart';
 import 'package:page_animation_transition/page_animation_transition.dart';
+
 import 'package:sizer/sizer.dart';
 
 Widget movieTime() {
   return SliverList.separated(
     itemBuilder: (context, index) {
+      //  final seatdata = seat_controll.allseats[index];
       final snap = date_controll.showtimes[index];
       //final snap = date_controll.reply.data[index];
 
@@ -72,20 +74,37 @@ Widget movieTime() {
                         scrollDirection: Axis.horizontal,
                         itemCount: date_controll.showtimes.length,
                         itemBuilder: (context, index) {
-                          //  final snap2 = date_controll.reply.data[index];
+                          /// final snap2 = date_controll.reply.data[index];
 
                           return Padding(
                             padding: EdgeInsets.only(left: 5.h),
                             child: Align(
                               alignment: Alignment.topLeft,
                               child: InkWell(
-                                splashColor: gy,
-                                onTap: () {
+                                // splashColor: gy,
+                                onTap: () async {
+                                  // final seatdata =
+                                  //     seat_controll.allseat.data.showData;
+                                  seat_controll.get_theater_seats(
+                                      date:tt.alldates.toString(),
+                                      showid: date_controll.showtimes[0].id
+                                          .toString());
                                   Navigator.of(context).push(
                                       PageAnimationTransition(
-                                          page: const selectseats(),
+                                          page: selectseats(
+                                              movie: snap.movieName.toString(),
+                                              time: snap.showTime.toString(),
+                                              date: snap.dates[index].date
+                                                  .toString()
+                                                  .substring(0, 11),
+                                              ownername:
+                                                  snap.ownerName.toString()),
                                           pageAnimationType:
                                               BottomToTopFadedTransition()));
+
+                                  // ignore: avoid_print
+                                  print(
+                                      " ----123-------${tt.alldates.toString()}--------123----");
                                 },
                                 child: Container(
                                   height: 4.h,
@@ -119,6 +138,6 @@ Widget movieTime() {
     separatorBuilder: (context, index) {
       return const SizedBox();
     },
-    itemCount: date_controll.showtimes.length ,
+    itemCount: date_controll.showtimes.length,
   );
 }
