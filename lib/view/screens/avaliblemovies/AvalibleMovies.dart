@@ -5,7 +5,6 @@ import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/avaliblemovies/widget/allmoviesList.dart';
-import 'package:bookticket/view/screens/search/widgets/movielist.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,6 +13,7 @@ import 'package:sizer/sizer.dart';
 class avalible_Movies extends StatelessWidget {
   final con = Get.put(ServiceViewMovies());
 
+  // ignore: use_key_in_widget_constructors
   avalible_Movies();
 
   @override
@@ -44,10 +44,8 @@ class avalible_Movies extends StatelessWidget {
                 ),
               ],
             ),
-            body:  ListView(
-                    children: [
-                      allmoviesList()
-                    ],
-                  )));
+            body: ListView(
+              children: [allmoviesList()],
+            )));
   }
 }

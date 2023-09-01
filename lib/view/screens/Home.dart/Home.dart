@@ -32,7 +32,7 @@ class Home extends StatelessWidget {
       // appBar: AppBar(),
       body: Obx(
         () => cons1.isLoading.value
-            ? const  Center(child: CircularProgressIndicator())
+            ? const Center(child: CircularProgressIndicator())
             : ListView(
                 children: [
                   nav(context),
@@ -61,7 +61,6 @@ class Home extends StatelessWidget {
                                   .map((e) => e.movieId.toString())
                                   .forEach((element) {
                                 cons1.getMovies(ids: element);
-                               
                               });
 
                               Get.to(avalible_Movies());

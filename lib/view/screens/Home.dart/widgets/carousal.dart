@@ -14,7 +14,7 @@ carousal() {
       ? const Center(child: CircularProgressIndicator())
       : CarouselSlider(
           options: CarouselOptions(autoPlay: true, height: 32.h),
-          items: [0,1, 2, 3, 4, 5].map((i) {
+          items: [0, 1, 2, 3, 4, 5].map((i) {
             return Builder(
               builder: (BuildContext context) {
                 return Padding(

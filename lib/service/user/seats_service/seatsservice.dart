@@ -100,22 +100,30 @@ class button_seat_selection extends GetxController {
       List.generate(seat_controll.allseat.data.screen.totalSeats, (_) => false)
           .obs;
 
-  void toggleButtonSelection(int index) {
+  void toggleButtonSelection(var index) {
     buttonSelections[index] = !buttonSelections[index];
   }
 
   RxList<dynamic> countickets = <dynamic>[].obs;
-  dynamic counter = 0.obs;
+RxDouble counter = 0.0.obs;
+  RxDouble price = 0.0.obs;
+RxDouble totals = 0.0.obs;
 
   void click_count(var count) {
     if (countickets.value.toSet().contains(count)) {
       countickets.value.remove(count);
       print("counts_tickets_removed  =${countickets.value.length}");
-      counter.value = countickets.value.length;
+      counter.value = countickets.value.length.toDouble();
+      price.value =
+          seat_controll.allseat.data.showData.price.toDouble() * -countickets.value.length;
       update();
     } else {
       countickets.value.add(count);
-      counter.value = countickets.value.length;
+      counter.value = countickets.value.length.toDouble();
+      price.value =
+          seat_controll.allseat.data.showData.price * countickets.value.length.toDouble();
+
+      print("//*******${price.toString()}*********");
 
       //   print("counts_tickets  =${countickets.value.length}");
       print("counting  added ${countickets.value.toList().toString()}");

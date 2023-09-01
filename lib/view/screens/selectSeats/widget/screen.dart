@@ -1,5 +1,4 @@
 import 'package:bookticket/main.dart';
-import 'package:bookticket/model/user/theater_show_time10/theater_show_time10.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/selectSeats/widget/seats.dart';

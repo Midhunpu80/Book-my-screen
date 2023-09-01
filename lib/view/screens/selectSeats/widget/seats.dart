@@ -68,14 +68,15 @@ Widget seats() {
                     () => InkWell(
                       onTap: () {
                         var data =
-                            "${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}${index % 12}";
+                            "${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}-${index % 12}";
                         button_controllers.click_count(data);
+                        // ignore: unnecessary_brace_in_string_interps
                         print("kop---------------${data}----------");
                         button_controllers.toggleButtonSelection(index);
 
                         // ignore: avoid_print
                         print(
-                            " ${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}${index % 12}");
+                            " ${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}-${index % 12}");
                       },
                       child: Container(
                         height: 18,
@@ -91,7 +92,7 @@ Widget seats() {
                             child: alltext(
                                 // ignore: unnecessary_brace_in_string_interps
                                 txt:
-                                    " ${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}${index % 12}",
+                                    " ${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}-${index % 12}",
                                 col: wh,
                                 siz: 5.sp,
                                 wei: FontWeight.bold)),
@@ -106,7 +107,7 @@ Widget seats() {
 
                         // ignore: avoid_print
                         print(
-                            " ${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}${index % 12}");
+                            " ${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}-${index % 12}");
                       },
                       child: Container(
                         height: 18,
@@ -123,7 +124,7 @@ Widget seats() {
                             child: alltext(
                                 // ignore: unnecessary_brace_in_string_interps
                                 txt:
-                                    " ${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}${index % 12}",
+                                    " ${String.fromCharCode(index ~/ 12 + 65).toString().toUpperCase()}-${index % 12}",
                                 col: wh,
                                 siz: 6.sp,
                                 wei: FontWeight.bold)),

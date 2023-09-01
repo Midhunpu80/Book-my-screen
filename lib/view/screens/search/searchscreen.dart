@@ -37,7 +37,8 @@ class Searchscreen extends StatelessWidget {
                 type: TextInputType.text,
                 help: "search"),
             Obx(
-              () =>serch_contolx.fonts.isEmpty 
+              () => serch_contolx.fonts.isEmpty
+                  // ignore: prefer_const_constructors
                   ? CircularProgressIndicator()
                   : movielsit(),
             )

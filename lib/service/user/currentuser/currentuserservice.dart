@@ -39,6 +39,7 @@ class get_currentuser_service extends GetxController {
   var name = "".obs;
   var emails = "".obs;
   var phones = "".obs;
+  var userid = "".obs;
 
   getupdate_user(
       {required var userid,
@@ -68,9 +69,11 @@ class get_currentuser_service extends GetxController {
         name.value = data["data"]["signName"];
         emails.value = data["data"]["signEmail"];
         phones.value = data["data"]["signPhone"];
+        userid.value = data["data"]["_id"];
 
         print(data.toString());
-        print(name.value.toString());
+        print("====>------>${userid.value.toString()}");
+        print("name.value.toString()");
         Get.snackbar(
             "SUCESS${data['success']}", "succesfully updated user data",
             backgroundColor: gr);
@@ -99,8 +102,8 @@ Future getcurrentuser() async {
     'Authorization': 'Bearer $token'
   });
   if (response.statusCode == 200) {
-    var dataz = response.body;
-    
+    final dataz = response.body;
+    return currentuser10FromJson(dataz);
   }
 }
 
@@ -113,8 +116,7 @@ class fetchapi extends GetxController {
       var love = await getcurrentuser();
       if (love != null) {
         ofuser.assignAll([love]);
-        print(
-            ofuser.map((element) => element.data.signName.toString()).toList());
+        print(ofuser.map((element) => element.data.id.toString()).toList());
         update();
       }
     } finally {

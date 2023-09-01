@@ -11,7 +11,7 @@ import 'package:page_animation_transition/page_animation_transition.dart';
 
 import 'package:sizer/sizer.dart';
 
-Widget movieTime() {
+Widget movieTime({required var img, required var lang}) {
   return SliverList.separated(
     itemBuilder: (context, index) {
       //  final seatdata = seat_controll.allseats[index];
@@ -26,6 +26,7 @@ Widget movieTime() {
             ),
           );
         }
+        // ignore: empty_statements
         ;
         bool iswork = date_controll.showtimes.isEmpty;
         // ignore: unnecessary_null_comparison, iterable_contains_unrelated_type
@@ -86,19 +87,29 @@ Widget movieTime() {
                                   // final seatdata =
                                   //     seat_controll.allseat.data.showData;
                                   seat_controll.get_theater_seats(
-                                      date:tt.alldates.toString(),
+                                      date: tt.alldates.toString(),
                                       showid: date_controll.showtimes[0].id
                                           .toString());
                                   Navigator.of(context).push(
                                       PageAnimationTransition(
                                           page: selectseats(
+                                              ownerid: snap.ownerId.toString(),
+                                              lang: lang.toString(),
+                                              moviename:
+                                                  snap.movieName.toString(),
+                                              img: img,
                                               movie: snap.movieName.toString(),
                                               time: snap.showTime.toString(),
                                               date: snap.dates[index].date
                                                   .toString()
                                                   .substring(0, 11),
                                               ownername:
-                                                  snap.ownerName.toString()),
+                                                  snap.ownerName.toString(),
+                                              location:
+                                                  snap.location.toString(),
+                                              screen: snap.screenId.toString(),
+                                              showtime:
+                                                  snap.showTime.toString()),
                                           pageAnimationType:
                                               BottomToTopFadedTransition()));
 

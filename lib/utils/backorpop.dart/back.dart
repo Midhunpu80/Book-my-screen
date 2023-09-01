@@ -1,6 +1,8 @@
-import 'package:bookticket/service/user/serchmovies/serchmovies_service.dart';
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/view/screens/search/searchscreen.dart';
+import 'package:bookticket/view/screens/selectSeats/widget/seats.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,13 +29,12 @@ Widget back() {
 ///////<-----search icon for every nav bar -------------->////
 
 Widget searchico() {
- 
   return CircleAvatar(
     backgroundColor: wh.withOpacity(0.3),
     child: IconButton(
         onPressed: () {
-         /// fetch.fetchproduct(query: "Dangal");
-      ///   serch_controll.getSerch_Movies(query: "Dangal");
+          /// fetch.fetchproduct(query: "Dangal");
+          ///   serch_controll.getSerch_Movies(query: "Dangal");
 
           // ignore: prefer_const_constructors
           Get.to(Searchscreen());
@@ -48,7 +49,7 @@ Widget searchico() {
 
 //<---------setting icon for every nava bar ---------->//////
 Widget settingico() {
-///  final fetch = Get.put(fetchcontroll());
+  ///  final fetch = Get.put(fetchcontroll());
   return CircleAvatar(
     backgroundColor: wh.withOpacity(0.3),
     child: IconButton(

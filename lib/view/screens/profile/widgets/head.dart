@@ -34,11 +34,15 @@ Widget head() {
                           height: 2.h,
                         ),
                         ////<--------user profile--------->///
-                        CircleAvatar(
-                          backgroundColor: wh,
-                          radius: 9.h,
-                          backgroundImage: const AssetImage(
-                            "images/cas.jpg",
+                        InkWell(
+                          splashColor: gr,
+                          onTap: () {},
+                          child: CircleAvatar(
+                            backgroundColor: wh,
+                            radius: 9.h,
+                            backgroundImage: const AssetImage(
+                              "images/cas.jpg",
+                            ),
                           ),
                         ),
                         SizedBox(

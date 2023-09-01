@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, unnecessary_string_interpolations, prefer_const_constructors
+// ignore_for_file: file_names, unnecessary_string_interpolations, prefer_const_constructors, non_constant_identifier_names
 
 import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';

@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_null_comparison
+
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:get/get.dart';
 
