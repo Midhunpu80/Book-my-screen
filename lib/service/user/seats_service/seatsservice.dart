@@ -64,6 +64,7 @@ class theater_seats_service10 extends GetxController {
   late Allseats10 allseat;
 
   var isLoading = false.obs;
+  var allsata;
 
   Future get_theater_seats({required var date, required var showid}) async {
     final bdy = {"showId": showid.toString(), "date": date.toString()};
@@ -80,6 +81,7 @@ class theater_seats_service10 extends GetxController {
           body: jsonEncode(bdy));
       if (response.statusCode == 200) {
         var resp = jsonDecode(response.body);
+        allsata = resp;
         allseat = Allseats10.fromJson(resp);
         print(allseat.data.showData.movieName.toString());
 
@@ -105,23 +107,21 @@ class button_seat_selection extends GetxController {
   }
 
   RxList<dynamic> countickets = <dynamic>[].obs;
-RxDouble counter = 0.0.obs;
+  RxDouble counter = 0.0.obs;
   RxDouble price = 0.0.obs;
-RxDouble totals = 0.0.obs;
+  RxDouble totals = 0.0.obs;
 
   void click_count(var count) {
     if (countickets.value.toSet().contains(count)) {
       countickets.value.remove(count);
       print("counts_tickets_removed  =${countickets.value.length}");
       counter.value = countickets.value.length.toDouble();
-      price.value =
-          seat_controll.allseat.data.showData.price.toDouble() * -countickets.value.length;
+      price.value = seat_controll.allseat.data.showData.price.toDouble() *- countickets.value.length;
       update();
     } else {
       countickets.value.add(count);
       counter.value = countickets.value.length.toDouble();
-      price.value =
-          seat_controll.allseat.data.showData.price * countickets.value.length.toDouble();
+      price.value = seat_controll.allseat.data.showData.price * countickets.value.length.toDouble();
 
       print("//*******${price.toString()}*********");
 

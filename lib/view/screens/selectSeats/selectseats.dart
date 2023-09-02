@@ -5,6 +5,7 @@ import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/Home.dart/widgets/nav.dart';
+import 'package:bookticket/view/screens/Theaters/widgets/MovieDate.dart';
 import 'package:bookticket/view/screens/payment_summary/payment_summaryscreen.dart';
 import 'package:bookticket/view/screens/selectSeats/widget/screen.dart';
 import 'package:bookticket/view/screens/selectSeats/widget/seats.dart';
@@ -41,8 +42,8 @@ class selectseats extends StatelessWidget {
       required this.showtime,
       required this.lang,
       required this.ownerid});
-  double ticketprice = button_controllers.price.value.toDouble();
-  double convicefee = seat_controll.allseat.data.showData.price / 6.toDouble();
+  double ticketprices = button_controllers.price.value ?? 0.0;
+  double convicefees = seat_controll.allseat.data.showData.price / 6 ?? 0.0;
 
   @override
   Widget build(BuildContext context) {
@@ -54,20 +55,22 @@ class selectseats extends StatelessWidget {
             width: 80.w,
             height: 6.h,
             child: FloatingActionButton(
-              onPressed: () {
-                dynamic data = ticketprice.toDouble() + convicefee.toDouble();
+              onPressed: () async {
+                dynamic alltotal = button_controllers.price.value.toInt() +
+                    seat_controll.allseat.data.showData.price / 6.toInt();
+                print(button_controllers.price.value.toDouble().toString());
                 if (button_controllers.countickets.isEmpty) {
                   Get.snackbar("select seats ", "please select  seats ",
                       backgroundColor: blu);
                 } else {
                   Get.to(() => payment_summary_screen(
-                        moviename: moviename,
-                        img: img,
-                        location: location,
-                        date: date,
-                        screen: screen,
-                        showtime: showtime,
-                        ownername: ownername,
+                        moviename: moviename.toString(),
+                        img: img.toString(),
+                        location: location.toString(),
+                        date: date.toString(),
+                        screen: screen.toString(),
+                        showtime: showtime.toString(),
+                        ownername: ownername.toString(),
                       ));
                   dynamic loss = fetchapis.ofuser[0].data.id.toString();
 
@@ -75,13 +78,12 @@ class selectseats extends StatelessWidget {
                     username: fetchapis.ofuser[0].data.signName.toString(),
                     fees: "${seat_controll.allseat.data.showData.price / 6}",
                     subtotal: "${button_controllers.price.toString()}",
-                    total: data.toString(),
+                    total: alltotal.toString().substring(0, 5),
                     image: img.toString(),
                     id: loss.toString(),
                     language: lang.toString(),
-                    date: date.toString(),
-                    seats:
-                        button_controllers.countickets.map((e) => e).toList(),
+                    date: date,
+                    seats: button_controllers.countickets,
                     location: location,
                     showtime: showtime,
                     screen: screen,
@@ -89,16 +91,19 @@ class selectseats extends StatelessWidget {
                     ownerid: ownerid,
                     ownername: ownername,
                   );
+                  // print()
+                  print("--<>----${alltotal.toString()}");
+                  print(loss.toString());
                   print(ownerid.toString());
                   print(ownername.toString());
 
-                  print(screen.toString());
+                  print("screeen ----${screen.toString()}");
                   print(location);
                   print(showtime.toString());
 
-                  print(date.toString());
+                  print(">----->${date.toString()}>----?");
                   print(button_controllers.countickets
-                      .map((e) => e)
+                      .map((e) => {"id": e.toString()})
                       .toList()
                       .toString());
                   print(img.toString());

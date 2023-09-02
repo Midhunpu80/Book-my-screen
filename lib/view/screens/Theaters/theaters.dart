@@ -6,6 +6,7 @@ import 'package:bookticket/view/screens/Theaters/widgets/MovieDate.dart';
 import 'package:bookticket/view/screens/Theaters/widgets/movietime.dart';
 import 'package:bookticket/view/screens/Theaters/widgets/sliverappbar.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class theaters extends StatelessWidget {
   var img;
@@ -34,7 +35,10 @@ class theaters extends StatelessWidget {
                   cat1: cat1,
                 ),
                 moviedate(moviename: txt.toString()),
-                movieTime(img: img, lang: lang)
+                Obx(() => movieTime(
+                    img: img,
+                    lang: lang,
+                    alldate: tt.datesall.value.toString()))
               ],
             )));
   }

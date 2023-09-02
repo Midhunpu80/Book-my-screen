@@ -11,7 +11,7 @@ import 'package:page_animation_transition/page_animation_transition.dart';
 
 import 'package:sizer/sizer.dart';
 
-Widget movieTime({required var img, required var lang}) {
+Widget movieTime({required var img, required var lang, required var alldate}) {
   return SliverList.separated(
     itemBuilder: (context, index) {
       //  final seatdata = seat_controll.allseats[index];
@@ -100,14 +100,14 @@ Widget movieTime({required var img, required var lang}) {
                                               img: img,
                                               movie: snap.movieName.toString(),
                                               time: snap.showTime.toString(),
-                                              date: snap.dates[index].date
+                                              date: tt.alldates
                                                   .toString()
                                                   .substring(0, 11),
                                               ownername:
                                                   snap.ownerName.toString(),
                                               location:
                                                   snap.location.toString(),
-                                              screen: snap.screenId.toString(),
+                                              screen: snap.screen.toString(),
                                               showtime:
                                                   snap.showTime.toString()),
                                           pageAnimationType:

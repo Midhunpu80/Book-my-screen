@@ -5,6 +5,12 @@ class theatercontroller extends GetxController {
 
   final cr = 0.obs;
 
+  RxString datesall = "".obs;
+  adddate({required var adddate}) {
+    adddate = datesall.value;
+    update();
+  }
+
   change({
     var index,
   }) {

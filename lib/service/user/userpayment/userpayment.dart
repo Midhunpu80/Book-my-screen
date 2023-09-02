@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
-import 'package:bookticket/view/screens/selectSeats/selectseats.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,7 +11,7 @@ class user_payment_service extends GetxController {
   getuserpayment(
       {required var fees,
       required var subtotal,
-      required var total,
+      required dynamic total,
       required var image,
       required var id,
       required var language,
@@ -25,30 +24,28 @@ class user_payment_service extends GetxController {
       required var ownername,
       required var moviename,
       required List<dynamic> seats}) async {
-    final bdy = {
-      {
-        "fee": fees.toString(),
-        "subtotal": subtotal.toString(),
-        "total": total.toString(),
-        "image": image,
-        "user": {
-          "user": {"_id": id.toString(), "signName": username.toString()}
-        },
-        "language": language.toString(),
-        "details": {
-          "selectedSeats": [
-            {"id": seats}
-          ],
-          "date": date.toString(),
-          "showDetails": {
-            "status": "Booked",
-            "ownerId": "6465ed40be6fc018b42248d6",
-            "ownerName": ownername.toString(),
-            "movieName": moviename.toString(),
-            "location": location.toString(),
-            "showTime": showtime.toString(),
-            "screen": screen.toString()
-          }
+    ///var mutli = fees + subtotal;
+
+    final Map<String, dynamic> bdy = {
+      "fee": fees.toString(),
+      "subtotal": subtotal.toString(),
+      "total": total.toString(),
+      "image": image.toString(),
+      "user": {
+        "user": {"_id": id.toString(), "signName": username.toString()}
+      },
+      "language": language.toString(),
+      "details": {
+        "selectedSeats": seats.map((e) => {"id": e.toString()}).toList(),
+        "date": date.toString(),
+        "showDetails": {
+          "status": "Booked",
+          "ownerId": ownerid.toString(),
+          "ownerName": ownername.toString(),
+          "movieName": moviename.toString(),
+          "location": location.toString(),
+          "showTime": showtime.toString(),
+          "screen": screen.toString()
         }
       }
     };
@@ -66,17 +63,19 @@ class user_payment_service extends GetxController {
           },
           body: jsonEncode(bdy));
       if (response.statusCode == 200) {
-        var data = jsonDecode(response.body);
+        var data = jsonDecode(response.body.toString());
         print(data.toString());
         isLoading(false);
         update();
       } else {
         isLoading(false);
-        throw ("is failed");
+        throw ("is failed${response.statusCode}");
       }
     } catch (e) {
       isLoading(false);
-      throw ("some errors correct this code -$e");
+      throw ("${e}");
+    } finally {
+      isLoading(false);
     }
     update();
   }

@@ -76,7 +76,8 @@ Widget datecard({required var moviename}) {
                     // tt.alldates = alldate_orgin[index];
                     dynamic s = alldate_orgin[index];
                     tt.alldates = s;
-                    // ignore: avoid_print
+                    tt.adddate(adddate: alldate_orgin[index].toString());
+
                     print(
                         "-----------${tt.alldates.toString()}------------------");
 
@@ -84,9 +85,6 @@ Widget datecard({required var moviename}) {
                     print(alldate_orgin[index]);
                     // ignore: unused_local_variable
                     var jay = tt.change(index: index);
-                    // ignore: avoid_print
-                    // print("${alldates[index]}");
-                    //  print("${changedate}");
                   },
                   child: Obx(
                     () => Container(
