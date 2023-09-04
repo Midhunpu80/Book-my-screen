@@ -45,6 +45,9 @@ class selectseats extends StatelessWidget {
   double ticketprices = button_controllers.price.value ?? 0.0;
   double convicefees = seat_controll.allseat.data.showData.price / 6 ?? 0.0;
 
+  ///dynamic alltotal = button_controllers.price.value.toInt() +
+  ///  seat_controll.allseat.data.showData.price / 6.toInt();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,6 +67,9 @@ class selectseats extends StatelessWidget {
                       backgroundColor: blu);
                 } else {
                   Get.to(() => payment_summary_screen(
+                        ownerid: ownerid,
+                        language: lang,
+                        id: fetchapis.ofuser[0].data.id.toString(),
                         moviename: moviename.toString(),
                         img: img.toString(),
                         location: location.toString(),
@@ -74,24 +80,6 @@ class selectseats extends StatelessWidget {
                       ));
                   dynamic loss = fetchapis.ofuser[0].data.id.toString();
 
-                  payment_controll.getuserpayment(
-                    username: fetchapis.ofuser[0].data.signName.toString(),
-                    fees: "${seat_controll.allseat.data.showData.price / 6}",
-                    subtotal: "${button_controllers.price.toString()}",
-                    total: alltotal.toString().substring(0, 5),
-                    image: img.toString(),
-                    id: loss.toString(),
-                    language: lang.toString(),
-                    date: date,
-                    seats: button_controllers.countickets,
-                    location: location,
-                    showtime: showtime,
-                    screen: screen,
-                    moviename: movie,
-                    ownerid: ownerid,
-                    ownername: ownername,
-                  );
-                  // print()
                   print("--<>----${alltotal.toString()}");
                   print(loss.toString());
                   print(ownerid.toString());
