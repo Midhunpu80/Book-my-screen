@@ -6,6 +6,7 @@ import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:bookticket/service/user/getdates/getdates.dart';
 import 'package:bookticket/service/user/seats_service/seatsservice.dart';
 import 'package:bookticket/service/user/serchmovies/serchmovies_service.dart';
+import 'package:bookticket/service/user/single_order_service/singleorder_service.dart';
 import 'package:bookticket/service/user/userpayment/userpayment.dart';
 import 'package:bookticket/view/screens/Home.dart/Home.dart';
 
@@ -17,6 +18,8 @@ import 'package:sizer/sizer.dart';
 void main() {
   runApp(const MyApp());
 }
+
+final single_ticket = Get.put(single_order_service());
 
 final currentuser_controll = Get.put(get_currentuser_service());
 final view_movie_controll = Get.put(ServiceViewMovies());

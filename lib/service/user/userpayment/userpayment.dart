@@ -1,5 +1,8 @@
+// ignore_for_file: avoid_print
+
 import 'dart:convert';
 
+import 'package:bookticket/main.dart';
 import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
@@ -64,6 +67,10 @@ class user_payment_service extends GetxController {
           body: jsonEncode(bdy));
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
+        single_ticket.getsingleorder(id: data["data"]["bookings"]["_id"].toString());
+        print(
+            "---------all of them sucess------------------can you know abou this--------------------------------------${ data["data"]["bookings"]["_id"].toString()}");
+
         print(data.toString());
         isLoading(false);
         update();
@@ -73,6 +80,7 @@ class user_payment_service extends GetxController {
       }
     } catch (e) {
       isLoading(false);
+      // ignore: unnecessary_brace_in_string_interps
       throw ("${e}");
     } finally {
       isLoading(false);

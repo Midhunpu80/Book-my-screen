@@ -116,12 +116,14 @@ class button_seat_selection extends GetxController {
       countickets.value.remove(count);
       print("counts_tickets_removed  =${countickets.value.length}");
       counter.value = countickets.value.length.toDouble();
-      price.value = seat_controll.allseat.data.showData.price.toDouble() *- countickets.value.length;
+      price.value = seat_controll.allseat.data.showData.price.toDouble() *
+          -countickets.value.length;
       update();
     } else {
       countickets.value.add(count);
       counter.value = countickets.value.length.toDouble();
-      price.value = seat_controll.allseat.data.showData.price * countickets.value.length.toDouble();
+      price.value = seat_controll.allseat.data.showData.price *
+          countickets.value.length.toDouble();
 
       print("//*******${price.toString()}*********");
 

@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, camel_case_types, must_be_immutable
 
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
@@ -8,10 +7,10 @@ import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/Home.dart/Home.dart';
 import 'package:bookticket/view/screens/Home.dart/widgets/nav.dart';
 import 'package:bookticket/view/screens/payment_summary/widgets/payment%20card.dart';
+import 'package:bookticket/view/screens/payment_summary/widgets/paymentDone.dart';
 import 'package:bookticket/view/screens/selectSeats/widget/seats.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart';
 import 'package:sizer/sizer.dart';
 // ignore: depend_on_referenced_packages
 import 'package:razorpay_flutter/razorpay_flutter.dart';
@@ -89,7 +88,9 @@ class _payment_summary_screenState extends State<payment_summary_screen> {
       ownerid: widget.ownerid.toString(),
       ownername: widget.ownername.toString(),
     );
-    Get.to(Home());
+    Get.to(payment_done_screen());
+
+    // ticket_dialouge(context: context);
   }
 
   void _handlePaymentError(PaymentFailureResponse response) {
