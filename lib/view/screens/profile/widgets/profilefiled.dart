@@ -12,13 +12,12 @@ Widget pro_textfield(String hint, IconData ico, String mess,
       height: 9.h,
       width: 65.w,
       child: TextFormField(
-        style: TextStyle(color: bl,fontSize: 8.sp,fontWeight: FontWeight.bold),
+        style:
+            TextStyle(color: bl, fontSize: 8.sp, fontWeight: FontWeight.bold),
         keyboardType: type,
-        
 
         controller: cont,
         decoration: InputDecoration(
-          
             helperText: help,
             prefixIconColor: bl,
             filled: true,
@@ -46,5 +45,3 @@ Widget pro_textfield(String hint, IconData ico, String mess,
     ),
   );
 }
-
-

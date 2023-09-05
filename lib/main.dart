@@ -7,6 +7,7 @@ import 'package:bookticket/service/user/getdates/getdates.dart';
 import 'package:bookticket/service/user/seats_service/seatsservice.dart';
 import 'package:bookticket/service/user/serchmovies/serchmovies_service.dart';
 import 'package:bookticket/service/user/single_order_service/singleorder_service.dart';
+import 'package:bookticket/service/user/userorders_service/userorderservice.dart';
 import 'package:bookticket/service/user/userpayment/userpayment.dart';
 import 'package:bookticket/view/screens/Home.dart/Home.dart';
 
@@ -18,6 +19,8 @@ import 'package:sizer/sizer.dart';
 void main() {
   runApp(const MyApp());
 }
+
+final getalluser_order = Get.put(userorders_service());
 
 final single_ticket = Get.put(single_order_service());
 
@@ -52,41 +55,3 @@ class MyApp extends StatelessWidget {
     });
   }
 }
-
-//////////payment corret query parmas////////////////////////////////
-
-
-// {
-//     "fee": " 75",
-//     "subtotal": "452",
-//     "total": "527",
-//     "image": "https://image.tmdb.org/t/p/original//pTmMxAHqX4vsIDE6HPPxOR0Q6TN.jpg",
-//     "user": {
-//         "user": {
-//             "_id": "64e32a06ce747b2b2d18426d",
-//             "signName": "Lcu"
-//         }
-//     },
-//     "language": "Tamil",
-//     "details": {
-//         "selectedSeats": [
-//             {
-//                 "id": "A-2"
-//             }
-//             // ... (more seat objects)
-//         ],
-//         "date": "2023-08-23",   // Date in a specific format
-//         "showDetails": {
-//             "status": "Booked",
-//             "ownerId": "6465ed40be6fc018b42248d6",
-//             "ownerName": "Gokul",
-//             "movieName": "Jailer",
-//             "location": "Banglore",
-//             "showTime": "05:09am",
-//             "screen": "36"
-//            // "_id": 
-//         }
-//     }
-// }
-
-

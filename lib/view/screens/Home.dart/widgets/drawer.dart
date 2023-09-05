@@ -1,8 +1,11 @@
+import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/Home.dart/widgets/nav.dart';
 import 'package:bookticket/view/screens/avaliblemovies/AvalibleMovies.dart';
 import 'package:bookticket/view/screens/profile/profilescreen.dart';
+import 'package:bookticket/view/screens/search/searchscreen.dart';
+import 'package:bookticket/view/screens/userorders/userorders.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -78,9 +81,27 @@ Widget drwlists() {
           // ignore: avoid_unnecessary_containers
           return Container(
             child: ListTile(
-              onTap: () {
+              onTap: () async {
                 fetchapis.fetch();
-                index == 4 ? Get.back() : Get.to(avalible_Movies());
+
+                if (index == 4) {
+                  Get.back();
+                } else if (index == 0) {
+                  // ignore: prefer_const_constructors
+                  Get.to(userorders_screen());
+                  await getalluser_order.getuser_orders(
+                      userid: fetchapis.ofuser[0].data.id.toString());
+                  print(fetchapis.ofuser[0].data.id.toString());
+                } else if (index == 3) {
+                  Get.to(avalible_Movies());
+                } else if (index == 2) {
+                  // ignore: prefer_const_constructors
+                  Get.to(profileScreen());
+                } else {
+                  Get.back();
+                }
+
+                //  index != 1 ? Get.back() : Get.to(avalible_Movies());
               },
               leading: Icon(
                 drwicon[index],

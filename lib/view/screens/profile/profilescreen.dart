@@ -17,13 +17,6 @@ class profileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //   floatingActionButton: FloatingActionButton(onPressed: () {
-      //     currentuser_controll.coun();
-
-      //   },
-
-      // child:   Obx(() =>  alltext(txt:"${currentuser_controll.count.toString()}" , col: bl, siz: 12.sp, wei: FontWeight.bold)),
-      //   ),
       backgroundColor: bl,
       appBar: AppBar(
         centerTitle: true,

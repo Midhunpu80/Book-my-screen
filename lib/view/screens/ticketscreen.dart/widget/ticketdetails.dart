@@ -1,7 +1,8 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
-import 'package:bookticket/view/screens/LoginandSignup/otp/widgets/verifybutton.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
@@ -41,7 +42,6 @@ Widget ticket_details() {
   );
 }
 
-// ignore: non_constant_identifier_names
 Widget ticket_other_details() {
   return Padding(
     padding: const EdgeInsets.all(8.0),
@@ -75,7 +75,7 @@ Widget ticket_other_details() {
               wei: FontWeight.bold),
           alltext(
               txt:
-                  "${single_ticket.singleticket.data.showTime.toString()} ${single_ticket.singleticket.data.date.toString().substring(0,11)}",
+                  "${single_ticket.singleticket.data.showTime.toString()} ${single_ticket.singleticket.data.date.toString().substring(0, 11)}",
               col: bl,
               siz: 10.sp,
               wei: FontWeight.bold),
