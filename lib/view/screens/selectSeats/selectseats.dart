@@ -5,7 +5,6 @@ import 'package:bookticket/utils/backorpop.dart/back.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/Home.dart/widgets/nav.dart';
-import 'package:bookticket/view/screens/Theaters/widgets/MovieDate.dart';
 import 'package:bookticket/view/screens/payment_summary/payment_summaryscreen.dart';
 import 'package:bookticket/view/screens/selectSeats/widget/screen.dart';
 import 'package:bookticket/view/screens/selectSeats/widget/seats.dart';

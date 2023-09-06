@@ -14,7 +14,7 @@ class previous_booking_screen extends StatelessWidget {
       backgroundColor: bl,
       body: Obx(
         () => getalluser_order.isLoading.value
-            ?const  Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : SingleChildScrollView(

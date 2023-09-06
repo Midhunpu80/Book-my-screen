@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/backorpop.dart/back.dart';
@@ -10,13 +10,14 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
+// ignore: camel_case_types
 class userorders_screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
         length: 2,
         child: Scaffold(
-          backgroundColor: re,
+          backgroundColor: bl,
           appBar: AppBar(
             title: alltext(
                 txt: "Booking Status",

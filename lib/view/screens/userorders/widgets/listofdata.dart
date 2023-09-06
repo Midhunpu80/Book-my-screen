@@ -151,12 +151,12 @@ Widget upcomingticketdetails(
             children: [
               InkWell(
                 onTap: () async {
-                  await storeage.write(
-                      key: colorstore,
-                      value: cancelorder_controll.reply.data[index].status
-                          .toString());
+                  // await storeage.write(
+                  //     key: colorstore,
+                  //     value: cancelorder_controll.reply.data[index].status
+                  //         .toString());
                   Get.to(ticket_screen());
-                  await single_ticket.getsingleorder(id: id.toString());
+                  single_ticket.getsingleorder(id: id.toString());
 
                   ///print(read.toString());
                 },

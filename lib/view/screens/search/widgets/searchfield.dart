@@ -17,9 +17,10 @@ Widget search_textfield(
     child: SizedBox(
       height: 9.h,
       child: TextFormField(
+        //controller:contr ,
         onChanged: (val) {
           // serch_contol.fetch(val);
-          serch_contolx.newfetch(val.toString());
+          serch_contolx.newfetch(val: val.toString());
 
           /// sss.function(val.toString());
         },
