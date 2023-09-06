@@ -89,7 +89,7 @@ Widget drwlists() {
                 } else if (index == 0) {
                   // ignore: prefer_const_constructors
                   Get.to(userorders_screen());
-                  await getalluser_order.getuser_orders(
+               getalluser_order.getuser_orders(
                       userid: fetchapis.ofuser[0].data.id.toString());
                   print(fetchapis.ofuser[0].data.id.toString());
                 } else if (index == 3) {

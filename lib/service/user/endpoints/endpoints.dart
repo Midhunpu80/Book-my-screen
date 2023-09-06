@@ -17,4 +17,5 @@ String seats_url = "${userurl}/get-seats";
 String user_payment_url = "${userurl}get-payment";
 String single_order_url = "${userurl}/single-order";
 String get_userorders_url = "${userurl}/get-order";
+String cancel_order_url = "${userurl}/cancel-order";
 

@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:bookticket/main.dart';
 import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
+import 'package:bookticket/view/screens/userorders/controller/userorder_controller.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -67,9 +68,13 @@ class user_payment_service extends GetxController {
           body: jsonEncode(bdy));
       if (response.statusCode == 200) {
         var data = jsonDecode(response.body.toString());
-        single_ticket.getsingleorder(id: data["data"]["bookings"]["_id"].toString());
+        single_ticket.getsingleorder(
+            id: data["data"]["bookings"]["_id"].toString());
+        await getalluser_order.getuser_orders(
+            userid: data["data"]["bookings"]["userId"].toString());
+
         print(
-            "---------all of them sucess------------------can you know abou this--------------------------------------${ data["data"]["bookings"]["_id"].toString()}");
+            "---------all of them sucess------------------can you know abou this--------------------------------------${data["data"]["bookings"]["_id"].toString()}");
 
         print(data.toString());
         isLoading(false);

@@ -1,10 +1,23 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, avoid_print
 
+import 'package:bookticket/constant/storage.dart';
 import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
+import 'package:bookticket/view/screens/ticketscreen.dart/ticketscreen.dart';
+import 'package:bookticket/view/screens/userorders/controller/userorder_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
+import 'package:get/get.dart';
+
 import 'package:sizer/sizer.dart';
+
+var usercolorstore = "color";
+
+FlutterSecureStorage storeage = FlutterSecureStorage();
+
+// ignore: non_constant_identifier_names
+final order_controll = Get.put(userorder_controller());
 
 Widget upcomingdataList() {
   return Padding(
@@ -15,7 +28,7 @@ Widget upcomingdataList() {
         height: 82.h,
         width: 200.w,
         child: ListView.separated(
-            reverse: true,
+            // reverse: true,
             itemBuilder: (context, index) {
               final activesdata =
                   getalluser_order.reply.data.activeOrders[index];
@@ -43,6 +56,9 @@ Widget upcomingdataList() {
                                 fit: BoxFit.cover)),
                       ),
                       upcomingticketdetails(
+                          status: activesdata.status,
+                          index: index,
+                          id: activesdata.id,
                           moviename: activesdata.movieName,
                           lang: activesdata.language,
                           screen: activesdata.screen,
@@ -72,7 +88,8 @@ Widget upcomingdataList() {
 }
 
 Widget upcomingticketdetails(
-    {required var moviename,
+    {required var index,
+    required var moviename,
     required var lang,
     required var screen,
     required var seats,
@@ -81,7 +98,10 @@ Widget upcomingticketdetails(
     required var date,
     required var showtime,
     required var qyt,
-    required var price}) {
+    required var price,
+    required var id,
+    required var status}) {
+  ///var read = await storeage.read(key: colorstore);
   return Padding(
     padding: EdgeInsets.only(left: 5.h),
     child: SizedBox(
@@ -94,31 +114,29 @@ Widget upcomingticketdetails(
           alltext(
               txt:
                   // ignore: unnecessary_string_interpolations
-                  "${moviename.toString().substring(10, moviename.toString().length)}",
+                  "${moviename.toString().substring(0, moviename.toString().length)}",
               col: bl,
               siz: 12.sp,
               wei: FontWeight.bold),
           alltext(
               txt:
-                  "(${lang.toString().substring(9, lang.toString().length)})  | screen-${screen.toString()}",
+                  "(${lang.toString().substring(0, lang.toString().length)})  | screen-${screen.toString()}",
               col: bl,
               siz: 9.sp,
               wei: FontWeight.bold),
           alltext(
-              txt:
-                  "Seats:${seats.toString().substring(1, seats.toString().length - 1)}",
+              txt: "Seats:${seats.toString().substring(1)}",
               col: bl,
               siz: 8.sp,
               wei: FontWeight.bold),
           alltext(
-              txt:
-                  "${ownername.toString().substring(10, ownername.toString().length)} | ${location.toString().substring(9, location.toString().length)}",
+              txt: "${ownername.toString()} | ${location.toString()}",
               col: bl,
               siz: 9.sp,
               wei: FontWeight.bold),
           alltext(
               txt:
-                  "${date.toString().substring(0, 11)} | ${showtime.toString().toString().substring(9, showtime.toString().length)}",
+                  "${date.toString().substring(0, 12)} | ${showtime.toString()}",
               col: bl,
               siz: 8.sp,
               wei: FontWeight.bold),
@@ -127,39 +145,78 @@ Widget upcomingticketdetails(
               col: bl,
               siz: 8.sp,
               wei: FontWeight.bold),
+          // ignore: invalid_use_of_protected_member
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              Container(
-                height: 3.h,
-                width: 20.w,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(1.h), color: gr),
-                child: Center(
-                    child: alltext(
-                        txt: "Ticket",
-                        col: wh,
-                        siz: 8.sp,
-                        wei: FontWeight.bold)),
+              InkWell(
+                onTap: () async {
+                  await storeage.write(
+                      key: colorstore,
+                      value: cancelorder_controll.reply.data[index].status
+                          .toString());
+                  Get.to(ticket_screen());
+                  await single_ticket.getsingleorder(id: id.toString());
+
+                  ///print(read.toString());
+                },
+                child: Container(
+                  height: 3.h,
+                  width: 20.w,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(1.h), color: gr),
+                  child: Center(
+                      child: alltext(
+                          txt: "Ticket",
+                          col: wh,
+                          siz: 8.sp,
+                          wei: FontWeight.bold)),
+                ),
               ),
               SizedBox(
                 width: 5.5,
               ),
               InkWell(
-                onTap: () {},
+                onTap: () async {
+                  order_controll.change(index);
+                  cancelorder_controll.getcancel_order(ids: id);
+
+                  print(storeage.read(key: colorstore));
+                  print(
+                      "<----88888----->${localstores.read_thecode(key: colorstore.toLowerCase().toString())}>----8888---->");
+
+                  //  storeage.write(
+                  //       key: usercolorstore,
+                  //       value: order_controll.change(index));
+                },
                 child: Container(
                   height: 3.h,
                   width: 20.w,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(1.h), color: re),
-                  child: Center(
-                      child: alltext(
-                          txt: "cancel",
-                          col: wh,
-                          siz: 8.sp,
-                          wei: FontWeight.bold)),
+                  child: Obx(
+                    () => cancelorder_controll.isLoading.value
+                        ? Center(
+                            child: alltext(
+                                // ignore: invalid_use_of_protected_member
+                                txt: status.toString(),
+                                col: wh,
+                                siz: 8.sp,
+                                wei: FontWeight.bold))
+                        : Center(
+                            child: alltext(
+                                // ignore: invalid_use_of_protected_member
+                                txt: order_controll.cancelllist.value[index]
+                                    ? "canceled"
+                                    : cancelorder_controll
+                                        .reply.data[index].status
+                                        .toString(),
+                                col: wh,
+                                siz: 8.sp,
+                                wei: FontWeight.bold)),
+                  ),
                 ),
-              )
+              ),
             ],
           )
         ],

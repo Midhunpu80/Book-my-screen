@@ -16,10 +16,10 @@ class userorders_service extends GetxController {
   getuser_orders({required var userid}) async {
     ///var mutli = fees + subtotal;
 
-    final Map<String, dynamic> bdy = {"_id": userid.toString()};
+    final Map<String, dynamic> bdy = {"_id": userid};
 
     try {
-      isLoading(true);
+      isLoading.value = true;
 
       final response = await http.post(Uri.parse(get_userorders_url),
           headers: {
@@ -34,13 +34,15 @@ class userorders_service extends GetxController {
         reply = Userorders10.fromJson(data);
 
         print(
-            "----------------------------------------${reply.data.activeOrders.map((e) => e.movieName).toList()}");
+            "----------------------------------------${reply.data.activeOrders.map((e) => e.movieName.toString()).toList()}");
 
         print(data.toString());
-        isLoading(false);
+        isLoading.value = false;
+
         update();
       } else {
-        isLoading(false);
+        isLoading.value = false;
+
         throw ("is failed${response.statusCode}");
       }
     } catch (e) {
@@ -48,7 +50,7 @@ class userorders_service extends GetxController {
       // ignore: unnecessary_brace_in_string_interps
       throw ("${e}");
     } finally {
-      isLoading(false);
+      isLoading.value = false;
     }
     update();
   }

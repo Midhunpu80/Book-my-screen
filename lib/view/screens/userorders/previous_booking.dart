@@ -1,4 +1,4 @@
-// ignore_for_file: camel_case_types
+// ignore_for_file: camel_case_types, use_key_in_widget_constructors
 
 import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';
@@ -12,16 +12,19 @@ class previous_booking_screen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: bl,
-        body: Obx(
-      () => getalluser_order.isLoading.value
-          ? const Center(child: CircularProgressIndicator())
-          : SingleChildScrollView(
-              // ignore: prefer_const_constructors
-              child: Column(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [previous_bookingList()],
+      body: Obx(
+        () => getalluser_order.isLoading.value
+            ?const  Center(
+                child: CircularProgressIndicator(),
+              )
+            : SingleChildScrollView(
+                // ignore: prefer_const_constructors
+                child: Column(
+                  // ignore: prefer_const_literals_to_create_immutables
+                  children: [previous_bookingList()],
+                ),
               ),
-            ),
-    ));
+      ),
+    );
   }
 }

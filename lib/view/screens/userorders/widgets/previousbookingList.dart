@@ -1,4 +1,3 @@
-
 // ignore_for_file: file_names
 
 import 'package:bookticket/main.dart';
@@ -96,7 +95,7 @@ Widget upcomingticketdetails(
           alltext(
               txt:
                   // ignore: unnecessary_string_interpolations
-                  "${moviename.toString().substring(10, moviename.toString().length)}",
+                  "${moviename.toString().substring(0, moviename.toString().length)}",
               col: bl,
               siz: 12.sp,
               wei: FontWeight.bold),
@@ -111,14 +110,13 @@ Widget upcomingticketdetails(
               siz: 8.sp,
               wei: FontWeight.bold),
           alltext(
-              txt:
-                  "${ownername.toString().substring(10, ownername.toString().length)} | ${location.toString().substring(9, location.toString().length)}",
+              txt: "${ownername.toString()} | ${location.toString()}",
               col: bl,
               siz: 9.sp,
               wei: FontWeight.bold),
           alltext(
               txt:
-                  "${date.toString().substring(0, 11)} | ${showtime.toString()}",
+                  "${date.toString().substring(0, 12)} | ${showtime.toString()}",
               col: bl,
               siz: 8.sp,
               wei: FontWeight.bold),
