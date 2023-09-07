@@ -6,6 +6,7 @@ import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/userorders/previous_booking.dart';
 import 'package:bookticket/view/screens/userorders/upcoming.dart';
+import 'package:bookticket/view/screens/userorders/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -52,9 +53,7 @@ class userorders_screen extends StatelessWidget {
           ),
           body: Obx(
             () => getalluser_order.isLoading.value
-                ? Center(
-                    child: CircularProgressIndicator(),
-                  )
+                ? shimmer_userorder()
                 : TabBarView(children: [
                     upcoming_booking_screen(),
                     previous_booking_screen(),

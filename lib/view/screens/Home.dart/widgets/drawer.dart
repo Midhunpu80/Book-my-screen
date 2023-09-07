@@ -104,6 +104,7 @@ Widget drwlists() {
                   Get.to(profileScreen());
                 } else {
                   Get.back();
+                  themedatas.change(data: false);
                 }
 
                 //  index != 1 ? Get.back() : Get.to(avalible_Movies());
@@ -130,6 +131,7 @@ Widget drwlists() {
 }
 
 logout(BuildContext context) {
+  // ignore: prefer_const_declarations
   final rata = const FlutterSecureStorage();
   return GestureDetector(
     onTap: () async {
@@ -149,11 +151,9 @@ logout(BuildContext context) {
           Get.back();
           var lesson = await rata.read(key: usertoken);
           print(lesson.toString());
-
-          /// var nata = await rata.delete(key: usertoken);
-          /// var data = await rata.read(key: usertoken);
         },
         btnOkOnPress: () async {
+          // ignore: unused_local_variable
           var latea = await rata.delete(key: usertoken.toString());
           Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute(builder: (context) => const logorReg()),

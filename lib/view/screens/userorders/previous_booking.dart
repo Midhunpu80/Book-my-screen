@@ -4,6 +4,7 @@ import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 
 import 'package:bookticket/view/screens/userorders/widgets/previousbookingList.dart';
+import 'package:bookticket/view/screens/userorders/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -14,9 +15,7 @@ class previous_booking_screen extends StatelessWidget {
       backgroundColor: bl,
       body: Obx(
         () => getalluser_order.isLoading.value
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
+            ? shimmer_userorder()
             : SingleChildScrollView(
                 // ignore: prefer_const_constructors
                 child: Column(

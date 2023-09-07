@@ -3,6 +3,7 @@
 import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/view/screens/userorders/widgets/listofdata.dart';
+import 'package:bookticket/view/screens/userorders/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -16,9 +17,7 @@ class upcoming_booking_screen extends StatelessWidget {
       body: Obx(
         () => getalluser_order.isLoading.value &&
                 cancelorder_controll.isLoading.value
-            ? const Center(
-                child: CircularProgressIndicator(),
-              )
+            ? shimmer_userorder()
             : SingleChildScrollView(
                 // ignore: prefer_const_constructors
                 child: Column(

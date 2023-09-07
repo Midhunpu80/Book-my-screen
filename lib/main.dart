@@ -11,6 +11,8 @@ import 'package:bookticket/service/user/serchmovies/serchmovies_service.dart';
 import 'package:bookticket/service/user/single_order_service/singleorder_service.dart';
 import 'package:bookticket/service/user/userorders_service/userorderservice.dart';
 import 'package:bookticket/service/user/userpayment/userpayment.dart';
+import 'package:bookticket/utils/colors/colors.dart';
+import 'package:bookticket/utils/theme/theme_controller.dart';
 
 import 'package:bookticket/view/screens/splash.dart/splashScreen.dart';
 
@@ -37,10 +39,12 @@ final date_controll = Get.put<getdates_service>(getdates_service());
 final seat_controll = Get.put(theater_seats_service10());
 final payment_controll = Get.put(user_payment_service());
 final localstores = Get.put(mylocalstorage());
-  // ignore: prefer_const_constructors
-  final securedata = FlutterSecureStorage();
+final themedatas = Get.put(theme_controller());
+// ignore: prefer_const_constructors
+final securedata = FlutterSecureStorage();
 
 ///final serch_controll = Get.put(get_serch_Movies());////
+bool val = true;
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -50,11 +54,18 @@ class MyApp extends StatelessWidget {
       return GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
-        theme: ThemeData(
-          fontFamily: GoogleFonts.inter().fontFamily,
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
+        theme: val
+            ? ThemeData(
+                primaryColor: bl,
+                fontFamily: GoogleFonts.inter().fontFamily,
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                useMaterial3: true,
+              )
+            : ThemeData(
+                fontFamily: GoogleFonts.inter().fontFamily,
+                colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                useMaterial3: true,
+                primaryColor: wh),
         home: const Scaffold(
           body: splashscreen(),
         ),

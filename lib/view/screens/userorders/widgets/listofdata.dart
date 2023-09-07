@@ -151,10 +151,6 @@ Widget upcomingticketdetails(
             children: [
               InkWell(
                 onTap: () async {
-                  // await storeage.write(
-                  //     key: colorstore,
-                  //     value: cancelorder_controll.reply.data[index].status
-                  //         .toString());
                   Get.to(ticket_screen());
                   single_ticket.getsingleorder(id: id.toString());
 
@@ -181,9 +177,9 @@ Widget upcomingticketdetails(
                   order_controll.change(index);
                   cancelorder_controll.getcancel_order(ids: id);
 
-                 // print(storeage.read(key: colorstore));
-                 // print(
-                   ///   "<----88888----->${localstores.read_thecode(key: colorstore.toLowerCase().toString())}>----8888---->");
+                  // print(storeage.read(key: colorstore));
+                  // print(
+                  ///   "<----88888----->${localstores.read_thecode(key: colorstore.toLowerCase().toString())}>----8888---->");
 
                   //  storeage.write(
                   //       key: usercolorstore,
