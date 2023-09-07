@@ -6,6 +6,7 @@ import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/search/widgets/movielist.dart';
 import 'package:bookticket/view/screens/search/widgets/searchfield.dart';
+import 'package:bookticket/view/screens/search/widgets/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -39,7 +40,7 @@ class Searchscreen extends StatelessWidget {
             Obx(
               () => serch_contolx.fonts.isEmpty
                   // ignore: prefer_const_constructors
-                  ? CircularProgressIndicator()
+                  ? shimmer_search_reasult()
                   : movielsit(),
             )
           ],

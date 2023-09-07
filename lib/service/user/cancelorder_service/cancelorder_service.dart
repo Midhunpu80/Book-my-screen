@@ -2,7 +2,8 @@
 
 import 'dart:convert';
 
-
+import 'package:bookticket/constant/storage.dart';
+import 'package:bookticket/main.dart';
 import 'package:bookticket/model/user/cancelorder10.dart';
 import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:bookticket/service/user/endpoints/endpoints.dart';
@@ -16,6 +17,7 @@ class canceloreder_service extends GetxController {
   late Cancelorder10 reply;
 
   Future getcancel_order({var ids}) async {
+    var datatoken = await securedata.read(key: usertoken);
     try {
       isLoading(true);
 
@@ -28,7 +30,7 @@ class canceloreder_service extends GetxController {
           'Content-Type': 'application/json;charset=utf-8',
           'Accept': 'application/json',
           'Accept-Encoding': 'gzip, deflate',
-          'Authorization': 'Bearer $token'
+          'Authorization': 'Bearer $datatoken'
         },
       );
 

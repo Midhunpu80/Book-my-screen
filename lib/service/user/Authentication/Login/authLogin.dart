@@ -2,6 +2,8 @@
 
 import 'dart:convert';
 
+import 'package:bookticket/DB/storage.dart';
+import 'package:bookticket/constant/storage.dart';
 import 'package:bookticket/service/user/Authentication/exception.dart';
 import 'package:bookticket/service/user/allmovies/allmoviesSevice.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
@@ -12,6 +14,8 @@ import 'package:dio/dio.dart';
 
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+
+final store_cont = Get.put(mylocalstorage());
 
 class authLogin extends GetxController {
   final Dio dio = Dio();
@@ -32,14 +36,17 @@ class authLogin extends GetxController {
           headers: {'Content-Type': 'application/json'});
 
       if (response.statusCode == 200) {
-        String reply = response.body.toString();
+        Map<String, dynamic> reply = jsonDecode(response.body);
+        await store_cont.write(
+            key: usertoken, value: reply["token"].toString());
+        print(store_cont.read_thecode(key: usertoken));
 
         print("<-------${reply.toString()}------->");
         print("success");
 
         // ignore: prefer_const_constructors
         Get.to(Home());
-      
+
         Get.snackbar("${response}sucess", "logined", backgroundColor: blu);
       } else {
         Get.snackbar("${response.body.toString()}failed",

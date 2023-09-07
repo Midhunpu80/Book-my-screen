@@ -1,6 +1,6 @@
 // ignore_for_file: file_names
 
-import 'package:bookticket/main.dart';
+
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/Home.dart/Home.dart';

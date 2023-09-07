@@ -2,6 +2,7 @@
 
 import 'package:bookticket/service/user/allmovies/banner.dart';
 import 'package:bookticket/utils/colors/colors.dart';
+import 'package:bookticket/view/screens/Home.dart/widgets/shimmerWidgets.dart';
 
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -11,7 +12,7 @@ import 'package:sizer/sizer.dart';
 carousal() {
   final con = Get.put(banner_ViewMovies());
   return Obx(() => con.isLoading.value
-      ? const Center(child: CircularProgressIndicator())
+      ? shimmercarousal_auto()
       : CarouselSlider(
           options: CarouselOptions(autoPlay: true, height: 32.h),
           items: [0, 1, 2, 3, 4, 5].map((i) {

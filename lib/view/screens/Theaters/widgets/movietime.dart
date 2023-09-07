@@ -2,6 +2,7 @@ import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/Theaters/widgets/MovieDate.dart';
+import 'package:bookticket/view/screens/Theaters/widgets/shimmer.dart';
 import 'package:bookticket/view/screens/selectSeats/selectseats.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -20,11 +21,7 @@ Widget movieTime({required var img, required var lang, required var alldate}) {
 
       return Obx(() {
         if (date_controll.isLoading.value) {
-          return Center(
-            child: CircularProgressIndicator(
-              color: yl,
-            ),
-          );
+          return shimmer_thatertime();
         }
         // ignore: empty_statements
         ;

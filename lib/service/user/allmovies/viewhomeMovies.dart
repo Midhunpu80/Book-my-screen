@@ -12,24 +12,13 @@ import 'package:http/http.dart' as http;
 class ServiceViewMovies extends GetxController {
   late TopMovieModel now_Movies;
   var isLoading = false.obs;
-  // RxList<String> newdata = RxList<String>();
 
-  ///TopMovieModel now_Movies;
-
-  // RxList<String> newposter = RxList<String>();
   RxList<String> idt = RxList<String>();
-  // RxList<String> rate = RxList<String>();
 
-  // RxList<String> lan = RxList<String>();
-  // RxList<String> overview = RxList<String>();
-  // RxList<String> rele = RxList<String>();
-  // RxList<String> dur = RxList<String>();
   RxList<String> gene = RxList<String>();
   RxMap<dynamic, RxList<String>> allofthem = RxMap<dynamic, RxList<String>>();
-RxList<Map<String, dynamic>> allmoviesdetailsdata =
+  RxList<Map<String, dynamic>> allmoviesdetailsdata =
       RxList<Map<String, dynamic>>([]);
-
-//RxList<Map<String, dynamic>> allmoviesdetailsdata = <Map<String, dynamic>>[].obs;
 
   Future getMovies({required var ids}) async {
     try {

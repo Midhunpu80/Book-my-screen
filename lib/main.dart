@@ -11,9 +11,11 @@ import 'package:bookticket/service/user/serchmovies/serchmovies_service.dart';
 import 'package:bookticket/service/user/single_order_service/singleorder_service.dart';
 import 'package:bookticket/service/user/userorders_service/userorderservice.dart';
 import 'package:bookticket/service/user/userpayment/userpayment.dart';
-import 'package:bookticket/view/screens/Home.dart/Home.dart';
+
+import 'package:bookticket/view/screens/splash.dart/splashScreen.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sizer/sizer.dart';
@@ -35,6 +37,8 @@ final date_controll = Get.put<getdates_service>(getdates_service());
 final seat_controll = Get.put(theater_seats_service10());
 final payment_controll = Get.put(user_payment_service());
 final localstores = Get.put(mylocalstorage());
+  // ignore: prefer_const_constructors
+  final securedata = FlutterSecureStorage();
 
 ///final serch_controll = Get.put(get_serch_Movies());////
 
@@ -51,8 +55,8 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        home: Scaffold(
-          body: Home(),
+        home: const Scaffold(
+          body: splashscreen(),
         ),
         initialBinding: controlllerbinding(),
       );

@@ -13,10 +13,10 @@ class userorder_controller extends GetxController {
 
   change(var index) async {
     var dataa = cancelllist[index] = !cancelllist[index];
-    await storeage.write(
-      key: colorstore,
-      value: dataa.toString(),
-    );
+    // await storeage.write(
+    //   key: colorstore,
+    //   value: dataa.toString(),
+    // );
     update();
   }
 }

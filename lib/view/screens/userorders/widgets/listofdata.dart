@@ -181,9 +181,9 @@ Widget upcomingticketdetails(
                   order_controll.change(index);
                   cancelorder_controll.getcancel_order(ids: id);
 
-                  print(storeage.read(key: colorstore));
-                  print(
-                      "<----88888----->${localstores.read_thecode(key: colorstore.toLowerCase().toString())}>----8888---->");
+                 // print(storeage.read(key: colorstore));
+                 // print(
+                   ///   "<----88888----->${localstores.read_thecode(key: colorstore.toLowerCase().toString())}>----8888---->");
 
                   //  storeage.write(
                   //       key: usercolorstore,

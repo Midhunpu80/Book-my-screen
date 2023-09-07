@@ -2,9 +2,9 @@
 
 import 'dart:convert';
 
+import 'package:bookticket/constant/storage.dart';
 import 'package:bookticket/main.dart';
 import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
-import 'package:bookticket/view/screens/userorders/controller/userorder_controller.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
@@ -28,6 +28,8 @@ class user_payment_service extends GetxController {
       required var ownername,
       required var moviename,
       required List<dynamic> seats}) async {
+            var datatoken = await securedata.read(key: usertoken);
+
     ///var mutli = fees + subtotal;
 
     final Map<String, dynamic> bdy = {
@@ -63,7 +65,7 @@ class user_payment_service extends GetxController {
             'Content-Type': 'application/json;charset=utf-8',
             'Accept': 'application/json',
             'Accept-Encoding': 'gzip, deflate',
-            'Authorization': 'Bearer $token'
+            'Authorization': 'Bearer $datatoken'
           },
           body: jsonEncode(bdy));
       if (response.statusCode == 200) {

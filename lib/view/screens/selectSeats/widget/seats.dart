@@ -4,6 +4,7 @@ import 'package:bookticket/main.dart';
 import 'package:bookticket/service/user/seats_service/seatsservice.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
+import 'package:bookticket/view/screens/selectSeats/widget/shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
@@ -16,7 +17,7 @@ Widget seats() {
   return Obx(
     () => seat_controll.isLoading.value
         // ignore: prefer_const_constructors
-        ? CircularProgressIndicator()
+        ? shimmer_selectseats()
         : SizedBox(
             height: 40.h,
             width: 90.w,

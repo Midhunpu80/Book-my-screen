@@ -14,10 +14,11 @@ import 'package:bookticket/view/screens/avaliblemovies/AvalibleMovies.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
+ final cons = Get.put(service_ViewMovies());
+  final cons1 = Get.put(ServiceViewMovies());
 
 class Home extends StatelessWidget {
-  final cons = Get.put(service_ViewMovies());
-  final cons1 = Get.put(ServiceViewMovies());
+ 
   final cas = Get.put(cast_ViewMovies());
 
   @override
@@ -27,7 +28,7 @@ class Home extends StatelessWidget {
       backgroundColor: bl,
 
       endDrawer: Drawer(
-          width: 80.w, backgroundColor: bl.withOpacity(0.8), child: newdrwer()),
+          width: 80.w, backgroundColor: bl.withOpacity(0.8), child: newdrwer(context)),
 
       // appBar: AppBar(),
       body: Obx(

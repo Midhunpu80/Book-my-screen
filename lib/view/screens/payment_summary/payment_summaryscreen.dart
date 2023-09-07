@@ -142,9 +142,9 @@ class _payment_summary_screenState extends State<payment_summary_screen> {
                 height: 4.h,
               ),
               paymentcard(
-                  img: widget.img,
+                  img: widget.img.toString(),
                   moviename: widget.moviename,
-                  date: widget.date,
+                  date: widget.date.toString(),
                   ownername: widget.ownername.toString(),
                   showtime: widget.showtime.toString(),
                   screen: widget.screen.toString(),

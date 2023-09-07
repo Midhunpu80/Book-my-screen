@@ -1,12 +1,17 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:bookticket/constant/storage.dart';
 import 'package:bookticket/main.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
 import 'package:bookticket/view/screens/Home.dart/widgets/nav.dart';
+import 'package:bookticket/view/screens/LoginandSignup/loginorRegister/logorReg.dart';
 import 'package:bookticket/view/screens/avaliblemovies/AvalibleMovies.dart';
 import 'package:bookticket/view/screens/profile/profilescreen.dart';
-import 'package:bookticket/view/screens/search/searchscreen.dart';
 import 'package:bookticket/view/screens/userorders/userorders.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:get/get.dart';
 import 'package:sizer/sizer.dart';
 
@@ -19,7 +24,7 @@ List<IconData> drwicon = [
   Icons.exit_to_app
 ];
 
-newdrwer() {
+newdrwer(BuildContext context) {
   return SafeArea(
     child: Column(
       children: [
@@ -65,7 +70,7 @@ newdrwer() {
           height: 10.h,
         ),
 
-        logout(),
+        logout(context),
       ],
     ),
   );
@@ -89,7 +94,7 @@ Widget drwlists() {
                 } else if (index == 0) {
                   // ignore: prefer_const_constructors
                   Get.to(userorders_screen());
-               getalluser_order.getuser_orders(
+                  getalluser_order.getuser_orders(
                       userid: fetchapis.ofuser[0].data.id.toString());
                   print(fetchapis.ofuser[0].data.id.toString());
                 } else if (index == 3) {
@@ -124,10 +129,37 @@ Widget drwlists() {
   );
 }
 
-logout() {
+logout(BuildContext context) {
+  final rata = const FlutterSecureStorage();
   return GestureDetector(
-    onTap: () {
+    onTap: () async {
+      // ignore: await_only_futures
+      var data = await rata.read(key: usertoken);
+      print("<--row------${data.toString()}----row----->");
+
       print("Logout");
+      // ignore: avoid_single_cascade_in_expression_statements
+      AwesomeDialog(
+        context: context,
+        dialogType: DialogType.info,
+        animType: AnimType.rightSlide,
+        title: 'Logout',
+        desc: 'Are you sure',
+        btnCancelOnPress: () async {
+          Get.back();
+          var lesson = await rata.read(key: usertoken);
+          print(lesson.toString());
+
+          /// var nata = await rata.delete(key: usertoken);
+          /// var data = await rata.read(key: usertoken);
+        },
+        btnOkOnPress: () async {
+          var latea = await rata.delete(key: usertoken.toString());
+          Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute(builder: (context) => const logorReg()),
+              (route) => false);
+        },
+      )..show();
     },
     child: Container(
       height: 6.h,

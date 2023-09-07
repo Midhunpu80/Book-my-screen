@@ -6,6 +6,7 @@ import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
+import 'package:bookticket/view/screens/Home.dart/widgets/shimmerWidgets.dart';
 import 'package:bookticket/view/screens/profile/widgets/editsheet.dart';
 import 'package:bookticket/view/screens/search/searchscreen.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ final fetchapis = Get.put(fetchapi());
 
 nav(BuildContext context) {
   return Obx(() => fetchapis.isLoading.value || fetchapis.ofuser.isEmpty
-      ? const Center(child: CircularProgressIndicator())
+      ? shimmer_nav()
       : Column(
           children: [
             Row(

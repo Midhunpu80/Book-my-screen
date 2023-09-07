@@ -33,16 +33,17 @@ class search_controll12 extends GetxController {
     if (val.isEmpty || val == null) {
       // cant.clear();
 
-      cant.assignAll(fanda.allmoviesdetailsdata.toList());
+      cant.assignAll(fanda.allmoviesdetailsdata.toList().toSet());
 
       update();
     } else {
-      cant.value = fanda.allmoviesdetailsdata
+      cant.assignAll(fanda.allmoviesdetailsdata
           .where((e) => e["title"]
               .toString()
               .toLowerCase()
               .contains(val.toString().toLowerCase()))
-          .toList();
+          .toList()
+          .toSet());
       update();
     }
     fonts.value = cant;

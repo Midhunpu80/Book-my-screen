@@ -2,6 +2,8 @@
 
 import 'dart:convert';
 
+import 'package:bookticket/constant/storage.dart';
+import 'package:bookticket/main.dart';
 import 'package:bookticket/model/user/currentuser10.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/service/user/endpoints/endpoints.dart';
@@ -46,6 +48,7 @@ class get_currentuser_service extends GetxController {
       required var email,
       required var newname,
       required var editphone}) async {
+          var datatoken = await securedata.read(key: usertoken);
     final bdy = {
       "user": {"_id": userid.toString()},
       "editEmail": email.toString(),
@@ -61,7 +64,7 @@ class get_currentuser_service extends GetxController {
           'Content-Type': 'application/json;charset=utf-8',
           'Accept': 'application/json',
           'Accept-Encoding': 'gzip, deflate',
-          'Authorization': 'Bearer $token'
+          'Authorization': 'Bearer $datatoken'
         },
       );
       if (response.statusCode == 200) {

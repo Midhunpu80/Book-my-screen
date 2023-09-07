@@ -2,6 +2,8 @@
 
 import 'dart:convert';
 
+import 'package:bookticket/constant/storage.dart';
+import 'package:bookticket/main.dart';
 import 'package:bookticket/model/user/theater_show_time10/theater_show_time10.dart';
 import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:bookticket/service/user/endpoints/endpoints.dart';
@@ -23,6 +25,7 @@ class getdates_service extends GetxController {
 
   // ignore: non_constant_identifier_names
   Future<List<Datum>> getcurrent_Dates({var movie, var date}) async {
+    var datatoken = await securedata.read(key: usertoken);
     update();
     final bdy = {
       "date": date.toString(),
@@ -35,7 +38,7 @@ class getdates_service extends GetxController {
         'Content-Type': 'application/json;charset=utf-8',
         'Accept': 'application/json',
         'Accept-Encoding': 'gzip, deflate',
-        'Authorization': 'Bearer $token'
+        'Authorization': 'Bearer $datatoken'
       });
       showtimes.clear();
 

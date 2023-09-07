@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_declarations, unused_local_variable, non_constant_identifier_names
 
 import 'dart:convert';
+import 'package:bookticket/constant/storage.dart';
+import 'package:bookticket/main.dart';
 import 'package:bookticket/model/user/ticket_model.dart';
 import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:bookticket/service/user/endpoints/endpoints.dart';
@@ -14,6 +16,8 @@ class single_order_service extends GetxController {
 
   late Ticket10 singleticket;
   Future getsingleorder({var id}) async {
+        var datatoken = await securedata.read(key: usertoken);
+
     try {
       isLoading(true);
 
@@ -24,7 +28,7 @@ class single_order_service extends GetxController {
           'Content-Type': 'application/json;charset=utf-8',
           'Accept': 'application/json',
           'Accept-Encoding': 'gzip, deflate',
-          'Authorization': 'Bearer $token'
+          'Authorization': 'Bearer $datatoken'
         },
       );
 

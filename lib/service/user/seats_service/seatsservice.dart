@@ -2,9 +2,9 @@
 
 import 'dart:convert';
 
+import 'package:bookticket/constant/storage.dart';
 import 'package:bookticket/main.dart';
 import 'package:bookticket/model/user/theater_seats_model.dart';
-import 'package:bookticket/service/user/currentuser/currentuserservice.dart';
 import 'package:bookticket/service/user/endpoints/endpoints.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +13,7 @@ import 'package:http/http.dart' as http;
 
 class theater_seats_service {
   Future get_theater_seats({required var date, required var showid}) async {
+    var datatoken = await securedata.read(key: usertoken);
     final bdy = {"showId": showid.toString(), "date": date.toString()};
 
     final response = await http.post(Uri.parse(seats_url),
@@ -20,7 +21,7 @@ class theater_seats_service {
           'Content-Type': 'application/json;charset=utf-8',
           'Accept': 'application/json',
           'Accept-Encoding': 'gzip, deflate',
-          'Authorization': 'Bearer $token'
+          'Authorization': 'Bearer $datatoken'
         },
         body: jsonEncode(bdy));
     if (response.statusCode == 200) {
@@ -54,7 +55,6 @@ class theater_seats_fetch extends GetxController {
 
   @override
   void onInit() {
-    // TODO: implement onInit
     super.onInit();
     fetch();
   }
@@ -67,6 +67,7 @@ class theater_seats_service10 extends GetxController {
   var allsata;
 
   Future get_theater_seats({required var date, required var showid}) async {
+    var datatoken = await securedata.read(key: usertoken);
     final bdy = {"showId": showid.toString(), "date": date.toString()};
 
     try {
@@ -76,7 +77,7 @@ class theater_seats_service10 extends GetxController {
             'Content-Type': 'application/json;charset=utf-8',
             'Accept': 'application/json',
             'Accept-Encoding': 'gzip, deflate',
-            'Authorization': 'Bearer $token'
+            'Authorization': 'Bearer $datatoken'
           },
           body: jsonEncode(bdy));
       if (response.statusCode == 200) {

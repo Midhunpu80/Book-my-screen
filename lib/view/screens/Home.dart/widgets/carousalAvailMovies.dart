@@ -5,10 +5,12 @@ import 'package:bookticket/service/user/allmovies/cast.dart';
 import 'package:bookticket/service/user/allmovies/viewhomeMovies.dart';
 import 'package:bookticket/utils/colors/colors.dart';
 import 'package:bookticket/utils/text/text.dart';
+import 'package:bookticket/view/screens/Home.dart/widgets/shimmerWidgets.dart';
 import 'package:bookticket/view/screens/moviedetails/Moviedetails.dart';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import 'package:sizer/sizer.dart';
 
 carousalAvailMovies() {
@@ -17,7 +19,7 @@ carousalAvailMovies() {
   final con3 = Get.put(cast_ViewMovies());
   return Obx(
     () => availmoviesx.allmoviesdetailsdata.isEmpty
-        ? Center(child: CircularProgressIndicator())
+        ? shimmer_carouals()
         : Container(
             height: 35.h,
             width: 100.w,
@@ -52,11 +54,11 @@ carousalAvailMovies() {
                               height: 22.h,
                               width: 30.w,
                               decoration: BoxDecoration(
-                                  // image: DecorationImage(
-                                  //     image: NetworkImage(
-                                  //       "https://image.tmdb.org/t/p/original/${con.newposter[index].toString()}",
-                                  //     ),
-                                  //     fit: BoxFit.cover),
+                                  image: DecorationImage(
+                                      image: NetworkImage(
+                                        "https://image.tmdb.org/t/p/original/${snap["poster"].toString()}",
+                                      ),
+                                      fit: BoxFit.cover),
                                   borderRadius: BorderRadius.circular(10.sp),
                                   color: wh.withOpacity(0.3)),
                             ),
